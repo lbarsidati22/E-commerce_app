@@ -1,6 +1,5 @@
 import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/route/app_routes.dart';
-import 'package:Ecommerce/core/theme/app_colors.dart';
 import 'package:Ecommerce/features/auth/presentation/pages/auth_page.dart';
 import 'package:Ecommerce/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +38,7 @@ class NotFoundScreen extends StatelessWidget {
                   bottom: 50,
                   child: Text(
                     'Page Not Found',
-                    style: TextStyle(fontSize: 24, color: AppColors.grey),
+                    style: TextStyle(fontSize: 24, color: Colors.grey),
                   ),
                 ),
               ],
@@ -57,7 +56,7 @@ class NotFoundScreen extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 26,
-                      color: AppColors.white,
+                      color: Colors.white,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

@@ -1,4 +1,3 @@
-import 'package:Ecommerce/core/theme/app_colors.dart';
 import 'package:Ecommerce/core/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -66,7 +65,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         hintStyle: widget.hintStyle ?? AppStyles.regular16(context),
         isDense: true,
         labelStyle: TextStyle(
-          color: AppColors.white,
+          color: Colors.white,
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
@@ -82,7 +81,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: const BorderSide(color: AppColors.blue, width: 1.8),
+          borderSide: const BorderSide(color: Colors.blue, width: 1.8),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
@@ -101,7 +100,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                 },
                 icon: Icon(
                   isObscureText ? Icons.visibility_off : Icons.visibility,
-                  color: AppColors.grey,
+                  color: Colors.grey,
                 ),
               )
             : widget.suffixIcon,

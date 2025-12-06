@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
 
 abstract class AppTheme {
   static ThemeData getTheme({
@@ -10,23 +9,23 @@ abstract class AppTheme {
       colorScheme: colorScheme,
       appBarTheme: const AppBarTheme(
         centerTitle: false,
-        backgroundColor: AppColors.white,
-        foregroundColor: AppColors.black,
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
         elevation: 0,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: AppColors.orange,
-        unselectedItemColor: AppColors.grey,
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: Colors.grey,
         elevation: 0,
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.all(18),
-          backgroundColor: AppColors.orange,
-          foregroundColor: AppColors.white,
-          disabledBackgroundColor: AppColors.grey,
-          disabledForegroundColor: AppColors.white,
+          backgroundColor: Colors.orange,
+          foregroundColor: Colors.white,
+          disabledBackgroundColor: Colors.grey,
+          disabledForegroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(100),
           ),
@@ -34,7 +33,7 @@ abstract class AppTheme {
       ),
 
       inputDecorationTheme: InputDecorationTheme(
-        fillColor: AppColors.white,
+        fillColor: Colors.white,
         filled: true,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
         enabledBorder: OutlineInputBorder(
@@ -58,10 +57,10 @@ abstract class AppTheme {
       filledButtonTheme: FilledButtonThemeData(
         style: FilledButton.styleFrom(
           padding: const EdgeInsets.all(16),
-          disabledBackgroundColor: AppColors.grey,
+          disabledBackgroundColor: Colors.grey,
           backgroundColor: colorScheme.primary,
-          foregroundColor: AppColors.white,
-          disabledForegroundColor: AppColors.white,
+          foregroundColor: Colors.white,
+          disabledForegroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),
@@ -74,7 +73,7 @@ abstract class AppTheme {
           fontSize: 18,
           fontWeight: FontWeight.w500,
 
-          color: AppColors.black[500],
+          color: Colors.black,
         ),
       ),
     );
@@ -83,15 +82,15 @@ abstract class AppTheme {
   static ThemeData lightTheme = getTheme(
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
-      primary: AppColors.orange,
-      onPrimary: AppColors.white,
-      secondary: AppColors.black,
-      onSecondary: AppColors.white,
-      error: AppColors.red,
-      onError: AppColors.white,
-      surface: AppColors.white,
-      onSurface: AppColors.black,
+      primary: Colors.orange,
+      onPrimary: Colors.white,
+      secondary: Colors.black,
+      onSecondary: Colors.white,
+      error: Colors.red,
+      onError: Colors.white,
+      surface: Colors.white,
+      onSurface: Colors.black,
     ),
-    textFormFieldBorderColor: AppColors.grey,
+    textFormFieldBorderColor: Colors.grey,
   );
 }
