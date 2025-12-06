@@ -1,6 +1,10 @@
 import 'package:Ecommerce/core/route/app_routes.dart';
 import 'package:Ecommerce/core/route/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'core/l10n/app_localizations.dart';
+import 'core/cubit/app_cubit.dart';
+import 'core/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,15 +13,26 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'E-commerce App',
-      theme: ThemeData.dark(),
-      onGenerateRoute: Routes.generateRoute,
-      initialRoute: AppRoutes.authPage,
+    return BlocProvider(
+      create: (context) => AppCubit(),
+      child: BlocBuilder<AppCubit, AppState>(
+        builder: (context, state) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'E-commerce App',
+            theme: AppTheme.lightTheme(context, state.locale.languageCode),
+            darkTheme: AppTheme.darkTheme(context, state.locale.languageCode),
+            themeMode: state.themeMode,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: state.locale,
+            onGenerateRoute: Routes.generateRoute,
+            initialRoute: AppRoutes.authPage,
+          );
+        },
+      ),
     );
   }
 }
