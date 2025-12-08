@@ -25,12 +25,12 @@ class _LoginTabState extends State<LoginTab> {
   }
 
   void _submit() {
-    // if (_formKey.currentState!.validate()) {
-    //   context.read<AuthCubit>().login(
-    //     _emailController.text,
-    //     _passwordController.text,
-    //   );
-    // }
+    if (_formKey.currentState!.validate()) {
+      context.read<AuthCubit>().login(
+        _emailController.text,
+        _passwordController.text,
+      );
+    }
   }
 
   @override

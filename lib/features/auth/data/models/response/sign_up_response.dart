@@ -1,3 +1,4 @@
+import 'package:Ecommerce/features/auth/domain/entities/auth_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'sign_up_response.g.dart';
@@ -41,5 +42,9 @@ class UserDto {
 
   Map<String, dynamic> toJson() {
     return _$UserDtoToJson(this);
+  }
+
+  AuthEntity toEntity() {
+    return AuthEntity(name: name, email: email);
   }
 }

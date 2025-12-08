@@ -1,4 +1,5 @@
 import 'package:Ecommerce/features/auth/data/models/response/sign_up_response.dart';
+import 'package:Ecommerce/features/auth/domain/entities/auth_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'sign_in_response.g.dart';
@@ -20,5 +21,9 @@ class SignInResponse {
 
   Map<String, dynamic> toJson() {
     return _$SignInResponseToJson(this);
+  }
+
+  AuthEntity toEntity() {
+    return AuthEntity(name: user?.name, email: user?.email);
   }
 }

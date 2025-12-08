@@ -6,11 +6,11 @@ part of 'sign_in_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SignInRequest _$SignInRequestFromJson(Map<String, dynamic> json) =>
-    SignInRequest(
+SignInRequestBody _$SignInRequestBodyFromJson(Map<String, dynamic> json) =>
+    SignInRequestBody(
       email: json['email'] as String?,
       password: json['password'] as String?,
     );
 
-Map<String, dynamic> _$SignInRequestToJson(SignInRequest instance) =>
+Map<String, dynamic> _$SignInRequestBodyToJson(SignInRequestBody instance) =>
     <String, dynamic>{'email': instance.email, 'password': instance.password};
