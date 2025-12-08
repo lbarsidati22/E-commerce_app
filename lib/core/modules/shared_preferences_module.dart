@@ -1,50 +1,93 @@
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@module
-abstract class SharedPreferencesModule {
-  @preResolve
-  @singleton
-  Future<SharedPreferences> provideSharedPreferences() async {
-    return await SharedPreferences.getInstance();
-  }
-}
-
 @singleton
 class SharedPrefHelper {
-  final SharedPreferences _prefs;
+  factory SharedPrefHelper() {
+    return preferences;
+  }
 
-  SharedPrefHelper(this._prefs);
+  SharedPrefHelper._internal();
 
-  SharedPreferences get instance => _prefs;
+  static final SharedPrefHelper preferences = SharedPrefHelper._internal();
 
-    /// Set any supported type
-    Future<void> setValue(String key, dynamic value) async {
-      if (value is String) {
-        await _prefs.setString(key, value);
-      } else if (value is int) {
-        await _prefs.setInt(key, value);
-      } else if (value is double) {
-        await _prefs.setDouble(key, value);
-      } else if (value is bool) {
-        await _prefs.setBool(key, value);
-      } else {
-        throw Exception('Unsupported value type');
-      }
-    }
+  static late SharedPreferences sharedPreferences;
 
-    /// Get any value
-    dynamic getValue(String key) {
-      return _prefs.get(key);
-    }
+  ///Below method is to initialize the SharedPreference instance.
+  Future<dynamic> instantiatePreferences() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+  }
 
-    /// Remove a specific key
-    Future<void> remove(String key) async {
-      await _prefs.remove(key);
-    }
+  ///Below method is to return the SharedPreference instance.
+  SharedPreferences getPreferenceInstance() {
+    return sharedPreferences;
+  }
 
-    /// Clear all stored data
-    Future<void> clear() async {
-      await _prefs.clear();
+  ///Below method is to set the string value in the SharedPreferences.
+  Future<dynamic> setString({
+    required String key,
+    required String stringValue,
+  }) async {
+    await sharedPreferences.setString(key, stringValue);
+  }
+
+  ///Below method is to get the string value from the SharedPreferences.
+  String? getString({required String key}) {
+    return sharedPreferences.getString(key);
+  }
+
+  ///Below method is to set the boolean value in the SharedPreferences.
+  Future<dynamic> setBoolean({
+    required String key,
+    required bool boolValue,
+  }) async {
+    await sharedPreferences.setBool(key, boolValue);
+  }
+
+  ///Below method is to get the boolean value from the SharedPreferences.
+  bool? getBoolean({required String key}) {
+    return sharedPreferences.getBool(key);
+  }
+
+  ///Below method is to set the double value in the SharedPreferences.
+  Future<dynamic> setDouble({
+    required String key,
+    required double doubleValue,
+  }) async {
+    await sharedPreferences.setDouble(key, doubleValue);
+  }
+
+  ///Below method is to set the double value from the SharedPreferences.
+  double? getDouble({required String key}) {
+    return sharedPreferences.getDouble(key);
+  }
+
+  ///Below method is to set the int value in the SharedPreferences.
+  Future<dynamic> setInt({required String key, required int intValue}) async {
+    await sharedPreferences.setInt(key, intValue);
+  }
+
+  ///Below method is to get the int value from the SharedPreferences.
+  int? getInt({required String key}) {
+    return sharedPreferences.getInt(key);
+  }
+
+  ///Below method is to remove the received preference.
+  Future<dynamic> removePreference({required String key}) async {
+    await sharedPreferences.remove(key);
+  }
+
+  ///Below method is to check the availability of the received preference .
+  bool containPreference({required String key}) {
+    if (sharedPreferences.get(key) == null) {
+      return false;
+    } else {
+      return true;
     }
   }
+
+  ///Below method is to clear the SharedPreference.
+  Future<dynamic> clearPreferences() async {
+    await sharedPreferences.clear();
+  }
+}

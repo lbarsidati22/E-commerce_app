@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:Ecommerce/core/di/di.dart';
+import 'package:Ecommerce/core/keys/shared_key.dart';
+import 'package:Ecommerce/core/modules/shared_preferences_module.dart';
 import 'package:Ecommerce/core/route/app_routes.dart';
 import 'package:Ecommerce/core/route/routes.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +14,15 @@ import 'core/theme/app_theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-  runApp(const MyApp());
+  await SharedPrefHelper().instantiatePreferences();
+  final token = SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
+  log('token is $token');
+  runApp(MyApp(token: token));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String? token;
+  const MyApp({super.key, this.token});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +40,9 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: state.locale,
             onGenerateRoute: Routes.generateRoute,
-            initialRoute: AppRoutes.authPage,
+            initialRoute: (token != null && token!.isNotEmpty)
+                ? AppRoutes.home
+                : AppRoutes.authPage,
           );
         },
       ),

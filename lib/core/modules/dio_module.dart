@@ -35,7 +35,7 @@ abstract class DioModule {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = sharedPrefHelper.getValue(AppConstants.tokenKey);
+          final token = sharedPrefHelper.getString(key: AppConstants.tokenKey);
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
           }
