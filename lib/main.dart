@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AppCubit(),
+      create: (context) => getIt<AppCubit>(),
       child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
           return MaterialApp(
@@ -40,9 +40,10 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: state.locale,
             onGenerateRoute: Routes.generateRoute,
-            initialRoute: (token != null && token!.isNotEmpty)
-                ? AppRoutes.home
-                : AppRoutes.authPage,
+            // initialRoute: (token != null && token!.isNotEmpty)
+            //     ? AppRoutes.home
+            //     : AppRoutes.authPage,
+            initialRoute: AppRoutes.authPage,
           );
         },
       ),

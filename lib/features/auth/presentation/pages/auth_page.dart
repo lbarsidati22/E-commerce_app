@@ -1,4 +1,5 @@
 import 'package:Ecommerce/core/cubit/app_cubit.dart';
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/l10n/app_localizations.dart';
 import 'package:Ecommerce/core/route/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,6 @@ class AuthPage extends StatelessWidget {
             return DefaultTabController(
               length: 2,
               child: Scaffold(
-                backgroundColor: Colors.black,
                 body: SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -47,7 +47,7 @@ class AuthPage extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        // make the user can change theme and thenge lang with app cubit
+                        // Theme and Language Switcher
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -65,33 +65,42 @@ class AuthPage extends StatelessWidget {
                                         ThemeMode.light
                                     ? 'Light Mode'
                                     : 'Dark Mode',
-                                style: TextStyle(color: Colors.white),
+                                style: context.textTheme.titleMedium,
                               ),
                             ),
                             SizedBox(width: 16),
                             DropdownButton<String>(
+                              dropdownColor: Theme.of(
+                                context,
+                              ).colorScheme.surface,
                               value: context
                                   .watch<AppCubit>()
                                   .state
                                   .locale
                                   .languageCode,
+                              style: Theme.of(context).textTheme.bodyMedium,
                               onChanged: (value) {
-                                context.read<AppCubit>().changeLanguage(
-                                  context
-                                      .read<AppCubit>()
-                                      .state
-                                      .locale
-                                      .languageCode,
-                                );
+                                if (value != null) {
+                                  context.read<AppCubit>().changeLanguage(
+                                    value,
+                                  );
+                                }
                               },
-                              items: AppLocalizations.supportedLocales
-                                  .map<DropdownMenuItem<String>>((locale) {
-                                    return DropdownMenuItem<String>(
-                                      value: locale.languageCode,
-                                      child: Text(locale.languageCode),
-                                    );
-                                  })
-                                  .toList(),
+                              items: AppLocalizations.supportedLocales.map((
+                                locale,
+                              ) {
+                                return DropdownMenuItem(
+                                  value: locale.languageCode,
+                                  child: Text(
+                                    locale.languageCode == 'en'
+                                        ? 'English'
+                                        : 'Arabic',
+                                    style: Theme.of(
+                                      context,
+                                    ).textTheme.bodyMedium,
+                                  ),
+                                );
+                              }).toList(),
                             ),
                           ],
                         ),
@@ -99,12 +108,8 @@ class AuthPage extends StatelessWidget {
                         TabBar(
                           isScrollable: true,
                           tabAlignment: TabAlignment.start,
-                          labelColor: Colors.white,
                           indicatorColor: Colors.blue,
-                          labelStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          labelStyle: Theme.of(context).textTheme.titleMedium,
                           tabs: [
                             Tab(text: 'Login'),
                             Tab(text: 'Sign Up'),

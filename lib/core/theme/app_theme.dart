@@ -13,30 +13,12 @@ abstract class AppTheme {
     return ThemeData(
       fontFamily: fontFamily,
       colorScheme: colorScheme,
+      scaffoldBackgroundColor: colorScheme.primary,
       appBarTheme: AppBarTheme(
-        centerTitle: false,
+        centerTitle: true,
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
         elevation: 0,
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: colorScheme.surface,
-        elevation: 0,
-      ),
-
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.all(18),
-          backgroundColor: Colors.orange,
-          foregroundColor: Colors.white,
-          disabledBackgroundColor: Colors.grey,
-          disabledForegroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
-          ),
-        ),
       ),
 
       inputDecorationTheme: InputDecorationTheme(
@@ -61,18 +43,6 @@ abstract class AppTheme {
         ),
       ),
 
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          padding: const EdgeInsets.all(16),
-          disabledBackgroundColor: Colors.grey,
-          backgroundColor: colorScheme.primary,
-          foregroundColor: Colors.white,
-          disabledForegroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-        ),
-      ),
       textTheme: TextTheme(
         // Display
         displayLarge: AppStyles.bold57(
@@ -137,17 +107,18 @@ abstract class AppTheme {
         context: context,
         fontFamily: languageCode == 'ar' ? 'Cairo' : 'Poppins',
         colorScheme: const ColorScheme(
+          primaryContainer: ColorsLight.cardColor,
           brightness: Brightness.light,
-          primary: ColorsLight.mainColor, // Using Main Color
+          primary: ColorsLight.mainColor, // Brand Blue
           onPrimary: ColorsLight.white,
-          secondary: ColorsLight.black,
+          secondary: ColorsLight.secondaryColor, // Light Blue
           onSecondary: ColorsLight.white,
-          error: ColorsLight.pinkDark,
+          error: ColorsLight.error,
           onError: ColorsLight.white,
-          surface: ColorsLight.white,
-          onSurface: ColorsLight.black,
+          surface: ColorsLight.background,
+          onSurface: ColorsLight.fontColor,
         ),
-        textFormFieldBorderColor: Colors.grey,
+        textFormFieldBorderColor: ColorsLight.grey,
       );
 
   static ThemeData darkTheme(BuildContext context, String languageCode) =>
@@ -156,9 +127,10 @@ abstract class AppTheme {
         fontFamily: languageCode == 'ar' ? 'Cairo' : 'Poppins',
         colorScheme: const ColorScheme(
           brightness: Brightness.dark,
-          primary: ColorsDark.blueLight,
+          primary: ColorsDark.mainColor,
           onPrimary: ColorsDark.white,
           secondary: ColorsDark.blueDark,
+          primaryContainer: ColorsDark.containerColor,
           onSecondary: ColorsDark.white,
           error: Colors.red,
           onError: ColorsDark.white,

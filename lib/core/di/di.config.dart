@@ -24,6 +24,7 @@ import '../../features/auth/domain/usecases/sign_in_usecase.dart' as _i259;
 import '../../features/auth/domain/usecases/sign_up_usecase.dart' as _i860;
 import '../../features/auth/presentation/cubit/auth_cubit.dart' as _i117;
 import '../api_layer/api_client/api_client.dart' as _i225;
+import '../cubit/app_cubit.dart' as _i145;
 import '../modules/dio_module.dart' as _i948;
 import '../modules/shared_preferences_module.dart' as _i744;
 import '../utils/validator.dart' as _i449;
@@ -46,6 +47,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i528.PrettyDioLogger>(),
         gh<_i744.SharedPrefHelper>(),
       ),
+    );
+    gh.factory<_i145.AppCubit>(
+      () => _i145.AppCubit(gh<_i744.SharedPrefHelper>()),
     );
     gh.singleton<_i225.ApiClient>(() => _i225.ApiClient.new(gh<_i361.Dio>()));
     gh.factory<_i824.AuthDataSource>(
