@@ -1,53 +1,54 @@
-import 'package:Ecommerce/features/auth/data/datasources/contract/auth_remote_data_source.dart';
+import 'package:Ecommerce/core/api_layer/api_result/api_result.dart';
+import 'package:Ecommerce/features/auth/data/models/request/sign_in_request.dart';
+import 'package:Ecommerce/features/auth/data/models/request/sign_up_request.dart';
+import 'package:Ecommerce/features/auth/domain/usecases/sign_in_usecase.dart';
+import 'package:Ecommerce/features/auth/domain/usecases/sign_up_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 part 'auth_state.dart';
 
 @injectable
 class AuthCubit extends Cubit<AuthState> {
-  final AuthRemoteDataSource _authDataSource;
+  final SignUpUseCase _signUpUseCase;
+  final SignInUseCase _signInUseCase;
 
-  AuthCubit(this._authDataSource) : super(AuthInitial());
+  AuthCubit(this._signUpUseCase, this._signInUseCase) : super(AuthInitial());
 
-  // Future<void> login(String email, String password) async {
-  //   emit(AuthLoading());
-  //   try {
-  //     await _authDataSource.signInWithEmail(email, password);
-  //     //final user = _authDataSource.fetchRawUser();
-  //     emit(AuthSuccess());
-  //   } catch (e) {
-  //     emit(AuthError(e.toString()));
-  //   }
-  // }
+  Future<void> login(String email, String password) async {
+    emit(AuthLoading());
+    final result = await _signInUseCase(
+      SignInRequestBody(email: email, password: password),
+    );
+    switch (result) {
+      case ApiSuccessResult():
+        emit(AuthSuccess());
+      case ApiErrorResult():
+        emit(AuthError(result.errorMessage));
+    }
+  }
 
-  // Future<void> register(String name, String email, String password) async {
-  //   emit(AuthLoading());
-  //   try {
-  //     await _authDataSource.signUpWithEmail(
-  //       email: email,
-  //       password: password,
-  //       name: name,
-  //     );
-  //     //  final user = _authDataSource.fetchRawUser();
-  //     emit(AuthSuccess());
-  //   } catch (e) {
-  //     emit(AuthError(e.toString()));
-  //   }
-  // }
-
-  // Future<void> signOut() async {
-  //   try {
-  //     await _authDataSource.signOut();
-  //     emit(AuthInitial());
-  //   } catch (e) {
-  //     emit(AuthError(e.toString()));
-  //   }
-  // }
-
-  // void checkUserAuth() {
-  //   final userData = _authDataSource.fetchRawUser();
-  //   if (userData != null) {
-  //     emit(AuthSuccess());
-  //   }
-  // }
+  Future<void> register(
+    String name,
+    String email,
+    String password,
+    String rePassword,
+    String phone,
+  ) async {
+    emit(AuthLoading());
+    final result = await _signUpUseCase(
+      SignUpRequestBody(
+        name: name,
+        email: email,
+        password: password,
+        rePassword: rePassword,
+        phone: phone,
+      ),
+    );
+    switch (result) {
+      case ApiSuccessResult():
+        emit(AuthSuccess());
+      case ApiErrorResult():
+        emit(AuthError(result.errorMessage));
+    }
+  }
 }
