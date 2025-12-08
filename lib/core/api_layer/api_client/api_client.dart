@@ -12,9 +12,6 @@ abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
-  @GET(Endpoints.sampleEndpoint)
-  Future<String> getSampleData();
-
   // @POST(Endpoints.signUp)
   // Future<RegisterResponseDto> register(@Body() RegisterRequestDto request);
 }
