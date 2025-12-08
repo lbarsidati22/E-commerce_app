@@ -11,6 +11,9 @@
 class FontFamily {
   FontFamily._();
 
+  /// Font family: Cairo
+  static const String cairo = 'Cairo';
+
   /// Font family: Poppins
   static const String poppins = 'Poppins';
 }

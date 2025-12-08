@@ -15,6 +15,9 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../features/auth/data/datasources/contract/auth_remote_data_source.dart'
+    as _i645;
+import '../../features/auth/presentation/cubit/auth_cubit.dart' as _i117;
 import '../api_layer/api_client/api_client.dart' as _i225;
 import '../modules/dio_module.dart' as _i948;
 import '../modules/shared_preferences_module.dart' as _i744;
@@ -41,6 +44,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i744.SharedPrefHelper>(
       () => _i744.SharedPrefHelper(gh<_i460.SharedPreferences>()),
     );
+    gh.factory<_i645.AuthRemoteDataSource>(
+      () => _i645.AuthRemoteDataSourceImpl(),
+    );
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
         gh<_i528.PrettyDioLogger>(),
@@ -49,6 +55,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i344.LocaleCubit>(
       () => _i344.LocaleCubit(sharedPrefHelper: gh<_i744.SharedPrefHelper>()),
+    );
+    gh.factory<_i117.AuthCubit>(
+      () => _i117.AuthCubit(gh<_i645.AuthRemoteDataSource>()),
     );
     gh.singleton<_i225.ApiClient>(() => _i225.ApiClient.new(gh<_i361.Dio>()));
     return this;

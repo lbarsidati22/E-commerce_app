@@ -1,10 +1,19 @@
 part of 'auth_cubit.dart';
 
-abstract class AuthState extends Equatable {
+sealed class AuthState {
   const AuthState();
-
-  @override
-  List<Object> get props => [];
 }
 
-class AuthInitial extends AuthState {}
+final class AuthInitial extends AuthState {}
+
+final class AuthLoading extends AuthState {}
+
+final class AuthSuccess extends AuthState {
+  const AuthSuccess();
+}
+
+final class AuthError extends AuthState {
+  final String message;
+
+  const AuthError(this.message);
+}

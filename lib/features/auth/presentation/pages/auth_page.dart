@@ -1,59 +1,130 @@
-import 'package:Ecommerce/core/extensions/project_extensions.dart';
+import 'package:Ecommerce/core/cubit/app_cubit.dart';
+import 'package:Ecommerce/core/l10n/app_localizations.dart';
+import 'package:Ecommerce/core/route/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/cubit/app_cubit.dart';
+import '../cubit/auth_cubit.dart';
+import '../widgets/login_tab.dart';
+import '../widgets/register_tab.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Auth Page')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              context.l10n.firstName,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            const SizedBox(height: 20),
-            BlocBuilder<AppCubit, AppState>(
-              builder: (context, state) {
-                return Text(
-                  '${context.l10n.welcomBack} ${state.locale.languageCode}',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            heroTag: 'theme_btn',
-            onPressed: () {
-              final cubit = context.read<AppCubit>();
-              final isDark = cubit.state.themeMode == ThemeMode.dark;
-              cubit.changeTheme(isDark ? ThemeMode.light : ThemeMode.dark);
-            },
-            child: const Icon(Icons.brightness_6),
-          ),
-          const SizedBox(height: 10),
-          FloatingActionButton(
-            heroTag: 'lang_btn',
-            onPressed: () {
-              final cubit = context.read<AppCubit>();
-              final isArabic = cubit.state.locale.languageCode == 'ar';
-              cubit.changeLanguage(isArabic ? 'en' : 'ar');
-            },
-            child: const Icon(Icons.language),
-          ),
-        ],
-      ),
+    return Builder(
+      builder: (context) {
+        return BlocConsumer<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is AuthSuccess) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text('Successful!'),
+                ),
+              );
+              Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+            } else if (state is AuthError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: Colors.red,
+                  content: Text(state.message),
+                ),
+              );
+              print(state.message);
+            }
+          },
+          builder: (context, state) {
+            return DefaultTabController(
+              length: 2,
+              child: Scaffold(
+                backgroundColor: Colors.black,
+                body: SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 50,
+                      horizontal: 20,
+                    ),
+                    child: Column(
+                      children: [
+                        // make the user can change theme and thenge lang with app cubit
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                final cubit = context.read<AppCubit>();
+                                final isDark =
+                                    cubit.state.themeMode == ThemeMode.dark;
+                                cubit.changeTheme(
+                                  isDark ? ThemeMode.light : ThemeMode.dark,
+                                );
+                              },
+                              child: Text(
+                                context.watch<AppCubit>().state.themeMode ==
+                                        ThemeMode.light
+                                    ? 'Light Mode'
+                                    : 'Dark Mode',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            SizedBox(width: 16),
+                            DropdownButton<String>(
+                              value: context
+                                  .watch<AppCubit>()
+                                  .state
+                                  .locale
+                                  .languageCode,
+                              onChanged: (value) {
+                                context.read<AppCubit>().changeLanguage(
+                                  context
+                                      .read<AppCubit>()
+                                      .state
+                                      .locale
+                                      .languageCode,
+                                );
+                              },
+                              items: AppLocalizations.supportedLocales
+                                  .map<DropdownMenuItem<String>>((locale) {
+                                    return DropdownMenuItem<String>(
+                                      value: locale.languageCode,
+                                      child: Text(locale.languageCode),
+                                    );
+                                  })
+                                  .toList(),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        TabBar(
+                          isScrollable: true,
+                          tabAlignment: TabAlignment.start,
+                          labelColor: Colors.white,
+                          indicatorColor: Colors.blue,
+                          labelStyle: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          tabs: [
+                            Tab(text: 'Login'),
+                            Tab(text: 'Sign Up'),
+                          ],
+                        ),
+
+                        Expanded(
+                          child: TabBarView(
+                            children: [LoginTab(), RegisterTab()],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

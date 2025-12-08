@@ -1,15 +1,23 @@
+import 'package:Ecommerce/core/di/di.dart';
 import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/route/app_routes.dart';
+import 'package:Ecommerce/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:Ecommerce/features/auth/presentation/pages/auth_page.dart';
 import 'package:Ecommerce/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class Routes {
   static Route generateRoute(RouteSettings settings) {
     final url = Uri.parse(settings.name ?? '/');
     switch (url.path) {
       case AppRoutes.authPage:
-        return MaterialPageRoute(builder: (context) => const AuthPage());
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<AuthCubit>(),
+            child: const AuthPage(),
+          ),
+        );
       case AppRoutes.home:
         return MaterialPageRoute(builder: (context) => const HomePage());
 
