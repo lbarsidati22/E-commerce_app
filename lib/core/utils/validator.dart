@@ -40,4 +40,14 @@ class Validator {
       return null;
     }
   }
+
+  String? validatePhone(String value) {
+    if (value.isEmpty) {
+      return 'Phone number is required';
+    } else if (!RegExp(r'^(010|011|012|015)[0-9]{8}$').hasMatch(value)) {
+      // Egyptian phone validation
+      return 'Please enter a valid Egyptian phone number';
+    }
+    return null;
+  }
 }
