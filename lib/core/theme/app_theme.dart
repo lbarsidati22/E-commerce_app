@@ -111,7 +111,7 @@ abstract class AppTheme {
           primary: ColorsLight.mainColor, // Brand Blue
           onPrimary: ColorsLight.white,
           secondary: ColorsLight.secondaryColor, // Light Blue
-          onSecondary: ColorsLight.white,
+          onSecondary: ColorsLight.black,
           error: ColorsLight.error,
           onError: ColorsLight.white,
           surface: ColorsLight.background,

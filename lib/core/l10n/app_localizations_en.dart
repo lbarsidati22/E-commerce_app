@@ -1,13 +1,140 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
+// ignore_for_file: type=lint
+
+/// The translations for English (`en`).
 class AppLocalizationsEn extends AppLocalizations {
-  AppLocalizationsEn() : super('en');
+  AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appName => 'Fitness App';
+  String get appName => 'E-commerce App';
 
   @override
   String get appVersion => '1.0.0';
+
+  @override
+  String get termsAndConditions => 'Terms and Conditions';
+
+  @override
+  String get logOut => 'Log Out';
+
+  @override
+  String get change => 'Change';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get currentPassword => 'Current Password';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get welcomeBack => 'Welcome Back !';
+
+  @override
+  String get savedAddresses => 'Saved Addresses';
+
+  @override
+  String get notification => 'Notifications';
+
+  @override
+  String get aboutUs => 'About Us';
+
+  @override
+  String get searchForYourFavoriteProducts =>
+      'Search for your favorite products';
+
+  @override
+  String get searchInProduct => 'Search in product';
+
+  @override
+  String get searchHint =>
+      'Type in the search bar above to start searching for products';
+
+  @override
+  String get searching => 'Searching...';
+
+  @override
+  String get resultFor => 'Result For';
+
+  @override
+  String get noResultFound => 'No Result Found For';
+
+  @override
+  String get wasFound => 'Was Found';
+
+  @override
+  String get trySearchWithDeffrentKeys => 'try search with deferent word';
+
+  @override
+  String get search_error => 'Search Error';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get firstNameHint => 'Enter first name';
+
+  @override
+  String get lastName => 'Last Name';
+
+  @override
+  String get lastNameHint => 'Enter last name';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get emailHint => 'Enter your email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get passwordHint => 'Enter password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get confirmPasswordHint => 'Confirm password';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get phoneNumberHint => 'Enter your phone number';
+
+  @override
+  String get signUp => 'Sign Up';
+
+  @override
+  String get signIn => 'Sign In';
+
+  @override
+  String get createAccount => 'Create Account';
+
+  @override
+  String get name => 'User Name';
+
+  @override
+  String get haveAccount => 'Already have an account?';
+
+  @override
+  String get notHaveAccount => 'don\'t have an account?';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get pleaseEnterValue => 'Please enter value';
 
   @override
   String get pleaseEnterName => 'Please enter name';
@@ -31,7 +158,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emailMustBeLikeThisExampleGmailCom =>
-      'Email must be like this \nexample@gmail.com';
+      'Email must be like this \"example@gmail.com';
 
   @override
   String get pleaseEnterYourPhoneNumber => 'Please enter your phone number';
@@ -41,178 +168,296 @@ class AppLocalizationsEn extends AppLocalizations {
       'Enter a valid Egyptian phone number (e.g., 01xxxxxxxxx)';
 
   @override
-  String get home => 'Home';
+  String get forget_password => 'Forget password';
 
   @override
-  String get profile => 'Profile';
+  String get enter_your_email_associated =>
+      'please enter your email associated to\n your account';
 
   @override
-  String get login => 'Login';
+  String get continue_btn => 'Continue';
 
   @override
-  String get version => 'v 1.0.0-beta.1';
+  String get email_verification => 'Email Verification';
 
   @override
-  String get enterYourEmail => 'Enter your email';
+  String get enter_code_sent_to_email =>
+      'Please enter your code that send to your email address ';
 
   @override
-  String get email => 'Email';
-
-  @override
-  String get password => 'Password';
-
-  @override
-  String get enterYourPassword => 'Enter your password';
-
-  @override
-  String get rememberMe => 'Remember me';
-
-  @override
-  String get forgotPassword => 'Forgot password?';
-
-  @override
-  String get continueBtn => 'Continue';
-
-  @override
-  String get ok => 'Ok';
-
-  @override
-  String get thankYou => 'Thank you!!';
-
-  @override
-  String get successfully => 'successfully';
-
-  @override
-  String get done => 'Done';
-
-  @override
-  String get status => 'Status';
-
-  @override
-  String get loading => 'Loading...';
-
-  @override
-  String get success => 'Success';
-
-  @override
-  String get resetPassword => 'Reset Password';
-
-  @override
-  String get pleaseEnterYourEmailToReceiveAVerificationCode =>
-      'Please enter your email to receive a verification code to create a new password via email';
-
-  @override
-  String get send => 'Send';
-
-  @override
-  String get verificationCodeSentToYourEmail =>
-      'Verification code sent to your email';
-
-  @override
-  String get emailNotFound => 'Email Not Found';
-
-  @override
-  String get tryAgain => 'Try Again';
-
-  @override
-  String get emailVerification => 'Email Verification';
-
-  @override
-  String get pleaseEnterThe6DigitCodeSentToYourEmail =>
-      'Please enter the 6-digit code sent to your email';
-
-  @override
-  String get didntReceiveTheCode => "Didn't receive the code? ";
+  String get didnt_receive_code => 'Didn\'t receive the code?';
 
   @override
   String get resend => 'Resend';
 
   @override
-  String get pleaseEnterYourNewPassword => 'Please enter your new password';
+  String get invalid_code => '❗Invalid code';
 
   @override
-  String get newPassword => 'New Password';
+  String get reset_password => 'Reset_password';
 
   @override
-  String get enterYourNewPassword => 'Enter your new password';
+  String get reset_password_body =>
+      'Password must not be empty and must contain\n 6 characters with upper case letter and one\n number at least';
 
   @override
-  String get confirmYourPassword => 'Confirm your password';
+  String get new_password => 'New Password';
 
   @override
-  String get confirmPassword => 'Confirm Password';
+  String get enter_your_password => 'Enter your password';
 
   @override
-  String get passwordResetSuccessPleaseLoginAgainWithYourNewPassword =>
-      'Password reset successfully! Please login again with your new password.';
+  String get loading => 'Loading...';
 
   @override
   String get error => 'Error';
 
   @override
-  String get forgetPassword => 'Forget Password';
+  String get ok => 'Ok';
 
   @override
-  String get firstName => 'First Legal Name';
+  String get network_error => 'No internet connection';
 
   @override
-  String get lastName => 'Last Legal Name';
+  String get server_error => 'Server error';
 
   @override
-  String get enterFirstName => 'Enter First Legal Name';
+  String get reset_pass_success => 'Password reset successfully';
 
   @override
-  String get enterLastName => 'Enter Last Legal Name';
+  String get otp_resend_to_mail =>
+      'OTP resent to your email successfully\n Please check your email';
 
   @override
-  String get next => 'Next';
+  String get explore => 'Explore';
 
   @override
-  String get back => 'Back';
+  String get result => 'Result';
 
   @override
-  String get doIt => 'Do It';
+  String get profile => 'Profile';
 
   @override
-  String get skip => 'Skip';
+  String get survey => 'Survey';
 
   @override
-  String get title1oOnBarding => 'The Price Of Excellence\nIs Discipline';
+  String get search => 'Search';
 
   @override
-  String get title2oOnBarding => 'Fitness Has Never Been So\nMuch Fun';
+  String get browse_by_subject => 'Browse by subject';
 
   @override
-  String get title3oOnBarding => 'NO MORE EXCUSES\nDo It Now';
+  String get home => 'Home';
 
   @override
-  String get subtitle1OnBarding =>
-      'Discipline is the bridge between goals and success. Stay consistent, stay focused, and become your best version.';
+  String get categories => 'Categories';
 
   @override
-  String get subtitle2OnBarding =>
-      'Make every workout a joyful journey. Push your limits and enjoy every step towards a stronger you.';
+  String get cart => 'Cart';
 
   @override
-  String get subtitle3OnBarding =>
-      'Stop waiting for the right time — the time is now. Start your fitness journey and make it happen.';
+  String get occasion => 'Occasion';
 
   @override
-  String get hetThere => "Hey There";
+  String get descriptionAppBarBestSeller =>
+      'Bloom with our exquisite best sellers';
 
   @override
-  // TODO: implement welcomBack
-  String get welcomBack => "WELCOME Back";
+  String get noProductsFound => 'No Products Found';
 
   @override
-  // TODO: implement dontHaveAnAccountYet
-  String get dontHaveAnAccountYet => "Dont have an account yet ? ";
+  String get addToCart => 'Add To Cart';
 
   @override
-  // TODO: implement register
-  String get register => "Register";
+  String get egp => 'EGP';
 
   @override
-  // TODO: implement noWorkoutsAvailableYet
-  String get noWorkoutsAvailableYet => 'No workouts available yet!';
+  String get passwordCanNotBeEmpty => 'Password cannot be empty';
+
+  @override
+  String get all_prices_include_tax => 'All prices include tax';
+
+  @override
+  String get product_title => 'product title';
+
+  @override
+  String get emailCanNotBeEmpty => 'Email cannot be empty';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get in_stock => 'in stock';
+
+  @override
+  String get product_price => 'product price';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get description_body =>
+      'Lorem ipsum dolor sit amet consectetur. Id sit morbi ornare morbi duis rhoncus orci massa.';
+
+  @override
+  String get bouquet_include => 'Bouquet include';
+
+  @override
+  String get add_to_cart => 'Add to cart';
+
+  @override
+  String get pink_roses => 'Pink roses:15';
+
+  @override
+  String get white_wrap => 'White wrap';
+
+  @override
+  String get flowery => 'Flowery';
+
+  @override
+  String get view_all => 'View All';
+
+  @override
+  String get best_seller => 'Best Seller';
+
+  @override
+  String get profile_updated_successfully => 'Profile updated successfully';
+
+  @override
+  String get photo_updated_successfully => 'Photo updated successfully';
+
+  @override
+  String get rememberMe => 'Remember me';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get login_as_guest => 'Login as Guest';
+
+  @override
+  String get areYouSureYouWantToLogOut => 'Are you sure you want to log out?';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get confirmLogout => 'Confirm Logout';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get enter_your_address => 'Enter The address';
+
+  @override
+  String get enter_the_phone_number => 'Enter the phone number';
+
+  @override
+  String get enter_the_recipient_name => 'Enter the recipient name';
+
+  @override
+  String get receipient_name => 'Recipient Name';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get area => 'Area';
+
+  @override
+  String get save_address => 'Save Address';
+
+  @override
+  String get add_new_address => 'Add New Address';
+
+  @override
+  String get please_choose => 'choose';
+
+  @override
+  String get address_added_successfully => 'Address added successfully';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get completed => 'Completed';
+
+  @override
+  String get deliver_to => 'Deliver to';
+
+  @override
+  String get items => 'items';
+
+  @override
+  String get sub_total => 'Sub Total';
+
+  @override
+  String get delivery_fee => 'Delivery Fee';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get delivery_address => 'Delivery Address';
+
+  @override
+  String get no_addresses_found => 'No addresses found';
+
+  @override
+  String get add_new => 'Add New';
+
+  @override
+  String get its_a_gift => 'It\'s a gift';
+
+  @override
+  String get street => 'Street';
+
+  @override
+  String get enter_your_street => 'Enter your street';
+
+  @override
+  String get enter_your_city => 'Enter your city';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get enter_your_phone => 'Enter your phone';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get place_order => 'Place Order';
+
+  @override
+  String get payment_method => 'Payment Method';
+
+  @override
+  String get payment_cancled => 'Payment Cancelled';
+
+  @override
+  String get cash_on_delivery => 'Cash on Delivery';
+
+  @override
+  String get credit_card => 'Credit Card';
+
+  @override
+  String get delevery_time => 'Delivery Time';
+
+  @override
+  String get schedule => 'Schedule';
+
+  @override
+  String get your_order_placed => 'Your Order Placed';
+
+  @override
+  String get successfully => 'Successfully';
+
+  @override
+  String get addressDetails => 'Address Details';
 }

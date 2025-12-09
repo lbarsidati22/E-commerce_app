@@ -43,7 +43,7 @@ class AuthPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       vertical: 50,
-                      horizontal: 20,
+                      horizontal: 12,
                     ),
                     child: Column(
                       children: [
@@ -108,11 +108,16 @@ class AuthPage extends StatelessWidget {
                         TabBar(
                           isScrollable: true,
                           tabAlignment: TabAlignment.start,
-                          indicatorColor: Colors.blue,
+                          indicatorColor: Theme.of(
+                            context,
+                          ).colorScheme.secondary,
+                          dividerColor: Theme.of(
+                            context,
+                          ).colorScheme.onSecondary.withAlpha(120),
                           labelStyle: Theme.of(context).textTheme.titleSmall,
                           tabs: [
-                            Tab(text: 'Login'),
-                            Tab(text: 'Sign Up'),
+                            Tab(text: context.l10n.signIn),
+                            Tab(text: context.l10n.signUp),
                           ],
                         ),
 

@@ -1,3 +1,4 @@
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/utils/components/app_text_form_feild.dart';
 import 'package:Ecommerce/core/utils/components/custom_button.dart';
 import 'package:Ecommerce/core/utils/shared_blured_container.dart';
@@ -80,70 +81,56 @@ class _RegisterTabState extends State<RegisterTab> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Create Account',
+                  context.l10n.createAccount,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 30),
                 AppTextFormField(
-                  hintText: 'Name',
+                  hintText: context.l10n.name,
                   isPassword: false,
                   controller: _nameController,
-
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your name';
-                    }
-                    return null;
+                    return Validator().validateName(value ?? '', context);
                   },
                 ),
                 const SizedBox(height: 16),
                 AppTextFormField(
-                  hintText: 'Email',
+                  hintText: context.l10n.email,
                   isPassword: false,
                   controller: _emailController,
-
                   validator: (value) {
-                    // Basic check + Validator usage if integrated
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    return null;
+                    return Validator().validateEmail(value ?? '', context);
                   },
                 ),
                 const SizedBox(height: 16),
                 AppTextFormField(
-                  hintText: 'Phone',
+                  hintText: context.l10n.phoneNumber,
                   isPassword: false,
                   controller: _phoneController,
                   validator: (value) {
-                    return Validator().validatePhone(value ?? '');
+                    return Validator().validatePhone(value ?? '', context);
                   },
                 ),
                 const SizedBox(height: 16),
                 AppTextFormField(
-                  hintText: 'Password',
+                  hintText: context.l10n.password,
                   isPassword: true,
                   controller: _passwordController,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
+                    return Validator().validatePassword(value ?? '', context);
                   },
                 ),
                 const SizedBox(height: 16),
                 AppTextFormField(
-                  hintText: 'Confirm Password',
+                  hintText: context.l10n.confirmPassword,
                   isPassword: true,
                   controller: _confirmPasswordController,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please confirm your password';
-                    }
-                    if (value != _passwordController.text) {
-                      return 'Passwords do not match';
-                    }
-                    return null;
+                    return Validator().validateConfirmPassword(
+                      value ?? '',
+                      _passwordController.text,
+                      context,
+                    );
                   },
                 ),
                 const SizedBox(height: 24),
@@ -151,7 +138,6 @@ class _RegisterTabState extends State<RegisterTab> {
                   builder: (context, state) {
                     if (state is AuthLoading) {
                       return CustomButton(
-                        backgroundColorButton: Colors.blue,
                         size: Size(double.infinity, 48),
                         borderRadius: 12,
                         isLoading: true,
@@ -163,7 +149,7 @@ class _RegisterTabState extends State<RegisterTab> {
                       borderRadius: 12,
                       onPressed: _submit,
                       child: Text(
-                        'Sign Up',
+                        context.l10n.signUp,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     );

@@ -58,11 +58,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i170.AuthRepo>(
       () => _i279.AuthRepoImpl(gh<_i824.AuthDataSource>()),
     );
-    gh.factory<_i860.SignUpUseCase>(
-      () => _i860.SignUpUseCase(gh<_i170.AuthRepo>()),
-    );
     gh.factory<_i259.SignInUseCase>(
       () => _i259.SignInUseCase(gh<_i170.AuthRepo>()),
+    );
+    gh.factory<_i860.SignUpUseCase>(
+      () => _i860.SignUpUseCase(gh<_i170.AuthRepo>()),
     );
     gh.factory<_i117.AuthCubit>(
       () =>

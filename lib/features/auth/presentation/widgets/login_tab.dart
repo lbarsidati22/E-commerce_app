@@ -1,6 +1,8 @@
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/utils/components/app_text_form_feild.dart';
 import 'package:Ecommerce/core/utils/components/custom_button.dart';
 import 'package:Ecommerce/core/utils/shared_blured_container.dart';
+import 'package:Ecommerce/core/utils/validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/auth_cubit.dart';
@@ -48,33 +50,25 @@ class _LoginTabState extends State<LoginTab> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Welcome Back !',
+                  context.l10n.welcomeBack,
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SizedBox(height: 30),
                 AppTextFormField(
                   isPassword: false,
                   controller: _emailController,
-                  hintText: 'Email',
-                  hintStyle: Theme.of(context).textTheme.bodyMedium,
+                  hintText: context.l10n.email,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    return null;
+                    return Validator().validateEmail(value ?? '', context);
                   },
                 ),
                 const SizedBox(height: 16),
                 AppTextFormField(
-                  hintText: 'Password',
-                  hintStyle: Theme.of(context).textTheme.bodyMedium,
+                  hintText: context.l10n.password,
                   isPassword: true,
                   controller: _passwordController,
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
+                    return Validator().validatePassword(value ?? '', context);
                   },
                 ),
                 const SizedBox(height: 24),
@@ -82,7 +76,6 @@ class _LoginTabState extends State<LoginTab> {
                   builder: (context, state) {
                     if (state is AuthLoading) {
                       return CustomButton(
-                        backgroundColorButton: Colors.blue,
                         size: Size(double.infinity, 48),
                         borderRadius: 12,
                         isLoading: true,
@@ -94,7 +87,7 @@ class _LoginTabState extends State<LoginTab> {
                       borderRadius: 12,
                       onPressed: _submit,
                       child: Text(
-                        'Login',
+                        context.l10n.login,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     );

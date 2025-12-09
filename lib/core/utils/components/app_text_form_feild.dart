@@ -1,3 +1,4 @@
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -57,41 +58,40 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     return TextFormField(
       obscuringCharacter: "★",
       controller: widget.controller,
+      cursorColor: context.colorScheme.onSecondary,
       keyboardType: widget.keyboardType ?? TextInputType.text,
       decoration: InputDecoration(
         prefixIcon: widget.prefIcon,
         labelText: widget.labelText,
         hintText: widget.hintText,
-        hintStyle: widget.hintStyle ?? AppStyles.regular16(context),
+        hintStyle:
+            widget.hintStyle ??
+            AppStyles.regular16(
+              context,
+            ).copyWith(color: context.colorScheme.onSecondary.withAlpha(70)),
         isDense: true,
-        labelStyle: TextStyle(
-          color: Colors.white,
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-        ),
         contentPadding:
             widget.contentPadding ??
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         filled: true,
         fillColor: widget.backgroundColor ?? Colors.transparent,
-
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey.shade800, width: 1.2),
+          borderSide: BorderSide(
+            color: context.colorScheme.onSecondary.withAlpha(110),
+          ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.secondary,
-          ),
+          borderSide: BorderSide(color: context.colorScheme.onSecondary),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.red, width: 1.4),
+          borderSide: const BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.red, width: 1.4),
+          borderSide: const BorderSide(color: Colors.red),
         ),
         suffixIcon: widget.isPassword
             ? IconButton(
@@ -102,7 +102,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                 },
                 icon: Icon(
                   isObscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.onSecondary,
                 ),
               )
             : widget.suffixIcon,
