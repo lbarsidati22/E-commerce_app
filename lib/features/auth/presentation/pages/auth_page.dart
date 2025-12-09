@@ -1,6 +1,4 @@
-import 'package:Ecommerce/core/cubit/app_cubit.dart';
 import 'package:Ecommerce/core/extensions/project_extensions.dart';
-import 'package:Ecommerce/core/l10n/app_localizations.dart';
 import 'package:Ecommerce/core/route/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,97 +34,45 @@ class AuthPage extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return DefaultTabController(
-              length: 2,
-              child: Scaffold(
-                body: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 50,
-                      horizontal: 12,
-                    ),
-                    child: Column(
-                      children: [
-                        // Theme and Language Switcher
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                final cubit = context.read<AppCubit>();
-                                final isDark =
-                                    cubit.state.themeMode == ThemeMode.dark;
-                                cubit.changeTheme(
-                                  isDark ? ThemeMode.light : ThemeMode.dark,
-                                );
-                              },
-                              child: Text(
-                                context.watch<AppCubit>().state.themeMode ==
-                                        ThemeMode.light
-                                    ? 'Light Mode'
-                                    : 'Dark Mode',
-                                style: context.textTheme.titleSmall,
-                              ),
-                            ),
-                            SizedBox(width: 16),
-                            DropdownButton<String>(
-                              dropdownColor: Theme.of(
-                                context,
-                              ).colorScheme.surface,
-                              value: context
-                                  .watch<AppCubit>()
-                                  .state
-                                  .locale
-                                  .languageCode,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                              onChanged: (value) {
-                                if (value != null) {
-                                  context.read<AppCubit>().changeLanguage(
-                                    value,
-                                  );
-                                }
-                              },
-                              items: AppLocalizations.supportedLocales.map((
-                                locale,
-                              ) {
-                                return DropdownMenuItem(
-                                  value: locale.languageCode,
-                                  child: Text(
-                                    locale.languageCode == 'en'
-                                        ? 'English'
-                                        : 'Arabic',
-                                    style: Theme.of(
-                                      context,
-                                    ).textTheme.bodyMedium,
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 16),
-                        TabBar(
-                          isScrollable: true,
-                          tabAlignment: TabAlignment.start,
-                          indicatorColor: Theme.of(
-                            context,
-                          ).colorScheme.secondary,
-                          dividerColor: Theme.of(
-                            context,
-                          ).colorScheme.onSecondary.withAlpha(120),
-                          labelStyle: Theme.of(context).textTheme.titleSmall,
-                          tabs: [
-                            Tab(text: context.l10n.signIn),
-                            Tab(text: context.l10n.signUp),
-                          ],
-                        ),
-
-                        Expanded(
-                          child: TabBarView(
-                            children: [LoginTab(), RegisterTab()],
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DefaultTabController(
+                length: 2,
+                child: Scaffold(
+                  body: SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 50,
+                        horizontal: 12,
+                      ),
+                      child: Column(
+                        children: [
+                          // Theme and Language Switcher
+                          // ThemeAndLangWidget(),
+                          SizedBox(height: 16),
+                          TabBar(
+                            isScrollable: true,
+                            tabAlignment: TabAlignment.start,
+                            indicatorColor: Theme.of(
+                              context,
+                            ).colorScheme.secondary,
+                            dividerColor: Theme.of(
+                              context,
+                            ).colorScheme.onSecondary.withAlpha(120),
+                            labelStyle: Theme.of(context).textTheme.titleSmall,
+                            tabs: [
+                              Tab(text: context.l10n.signIn),
+                              Tab(text: context.l10n.signUp),
+                            ],
                           ),
-                        ),
-                      ],
+
+                          Expanded(
+                            child: TabBarView(
+                              children: [LoginTab(), RegisterTab()],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
