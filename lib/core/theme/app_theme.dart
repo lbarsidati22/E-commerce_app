@@ -107,7 +107,6 @@ abstract class AppTheme {
         context: context,
         fontFamily: languageCode == 'ar' ? 'Cairo' : 'Poppins',
         colorScheme: const ColorScheme(
-          primaryContainer: ColorsLight.cardColor,
           brightness: Brightness.light,
           primary: ColorsLight.mainColor, // Brand Blue
           onPrimary: ColorsLight.white,

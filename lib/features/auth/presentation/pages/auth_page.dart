@@ -65,7 +65,7 @@ class AuthPage extends StatelessWidget {
                                         ThemeMode.light
                                     ? 'Light Mode'
                                     : 'Dark Mode',
-                                style: context.textTheme.titleMedium,
+                                style: context.textTheme.titleSmall,
                               ),
                             ),
                             SizedBox(width: 16),
@@ -109,7 +109,7 @@ class AuthPage extends StatelessWidget {
                           isScrollable: true,
                           tabAlignment: TabAlignment.start,
                           indicatorColor: Colors.blue,
-                          labelStyle: Theme.of(context).textTheme.titleMedium,
+                          labelStyle: Theme.of(context).textTheme.titleSmall,
                           tabs: [
                             Tab(text: 'Login'),
                             Tab(text: 'Sign Up'),

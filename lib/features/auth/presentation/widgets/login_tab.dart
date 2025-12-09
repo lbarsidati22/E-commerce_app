@@ -40,7 +40,7 @@ class _LoginTabState extends State<LoginTab> {
       child: SingleChildScrollView(
         child: SharedBluredContainer(
           borderRadius: 20,
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(10),
           child: Form(
             key: _formKey,
             child: Column(
@@ -90,7 +90,6 @@ class _LoginTabState extends State<LoginTab> {
                       );
                     }
                     return CustomButton(
-                      backgroundColorButton: Colors.blue,
                       size: Size(double.infinity, 48),
                       borderRadius: 12,
                       onPressed: _submit,

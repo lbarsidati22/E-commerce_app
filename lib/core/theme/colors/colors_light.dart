@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorsLight {
-  static const Color mainColor = Color(0xFF4B4CED); // Brand Blue
+  static const Color mainColor = Color(0xFFF5F7FA); // Brand Blue
   static const Color secondaryColor = Color(0xFF37B6E9); // Light Blue
   static const Color background = Color(0xFFFFFFFF); // Clean White Background
   static const Color cardColor = Color(0xFFF5F7FA); // Light Grey for cards
@@ -10,4 +10,5 @@ class ColorsLight {
   static const Color error = Color(0xFFE53935);
   static const Color white = Color(0xffFFFFFF);
   static const Color black = Color(0xff000000);
+  static const Color containerColor = Colors.teal;
 }

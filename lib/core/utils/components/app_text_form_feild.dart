@@ -71,24 +71,26 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         ),
         contentPadding:
             widget.contentPadding ??
-            const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         filled: true,
         fillColor: widget.backgroundColor ?? Colors.transparent,
 
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(color: Colors.grey.shade800, width: 1.2),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
-          borderSide: const BorderSide(color: Colors.blue, width: 1.8),
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.secondary,
+          ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.red, width: 1.4),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.red, width: 1.4),
         ),
         suffixIcon: widget.isPassword
@@ -100,7 +102,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                 },
                 icon: Icon(
                   isObscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.grey,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               )
             : widget.suffixIcon,

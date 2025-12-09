@@ -28,7 +28,9 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         side: borderSide,
-        backgroundColor: backgroundColorButton,
+        foregroundColor: Theme.of(context).colorScheme.onSecondary,
+        backgroundColor:
+            backgroundColorButton ?? Theme.of(context).colorScheme.secondary,
         minimumSize: size,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(borderRadius),
@@ -36,8 +38,8 @@ class CustomButton extends StatelessWidget {
         elevation: elevation,
       ),
       child: isLoading
-          ? const CircularProgressIndicator.adaptive(
-              backgroundColor: Colors.white,
+          ? CircularProgressIndicator.adaptive(
+              backgroundColor: Theme.of(context).colorScheme.onSecondary,
             )
           : child,
     );

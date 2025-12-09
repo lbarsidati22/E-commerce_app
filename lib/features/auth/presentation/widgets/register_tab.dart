@@ -68,11 +68,11 @@ class _RegisterTabState extends State<RegisterTab> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.0),
+      padding: EdgeInsets.only(top: 30.0),
       child: SingleChildScrollView(
         child: SharedBluredContainer(
           borderRadius: 20,
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(10),
           child: Form(
             key: _formKey,
             child: Column(
@@ -159,7 +159,6 @@ class _RegisterTabState extends State<RegisterTab> {
                       );
                     }
                     return CustomButton(
-                      backgroundColorButton: Colors.blue,
                       size: Size(double.infinity, 48),
                       borderRadius: 12,
                       onPressed: _submit,
