@@ -6,13 +6,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Column(
-        children: [
-          Center(child: Text('Home Page')),
-          ThemeAndLangWidget(),
-        ],
-      ),
-    );
+    return Column(children: [ThemeAndLangWidget()]);
   }
 }
