@@ -1,10 +1,5 @@
-part of 'navbar_cubit.dart';
+sealed class LayoutState {}
 
-abstract class NavbarState extends Equatable {
-  const NavbarState();
+class LayoutInitialState extends LayoutState {}
 
-  @override
-  List<Object> get props => [];
-}
-
-class NavbarInitial extends NavbarState {}
+class LayoutChangeBottomNavState extends LayoutState {}
