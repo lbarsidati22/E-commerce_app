@@ -10,5 +10,5 @@ class ColorsLight {
   static const Color error = Color(0xFFE53935);
   static const Color white = Color(0xffFFFFFF);
   static const Color black = Color(0xff000000);
-  static const Color containerColor = Colors.teal;
+  static const Color containerColor = Color(0xFF1a2730);
 }

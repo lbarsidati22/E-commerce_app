@@ -23,6 +23,7 @@ import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
 import '../../features/auth/domain/usecases/sign_in_usecase.dart' as _i259;
 import '../../features/auth/domain/usecases/sign_up_usecase.dart' as _i860;
 import '../../features/auth/presentation/cubit/auth_cubit.dart' as _i117;
+import '../../features/navBar/presentation/cubit/navbar_cubit.dart' as _i668;
 import '../api_layer/api_client/api_client.dart' as _i225;
 import '../cubit/app_cubit.dart' as _i145;
 import '../modules/dio_module.dart' as _i948;
@@ -42,6 +43,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.singleton<_i744.SharedPrefHelper>(() => _i744.SharedPrefHelper.new());
     gh.lazySingleton<_i449.Validator>(() => _i449.Validator());
+    gh.factory<_i668.LayoutViewModel>(() => _i668.LayoutViewModel(gh<int>()));
     gh.singleton<_i361.Dio>(
       () => dioModule.provideDio(
         gh<_i528.PrettyDioLogger>(),
