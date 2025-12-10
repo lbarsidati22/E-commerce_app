@@ -1,3 +1,4 @@
+import 'package:Ecommerce/features/auth/presentation/widgets/theme_and_lang_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -5,6 +6,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Home Page')));
+    return SafeArea(
+      child: Column(
+        children: [
+          Center(child: Text('Home Page')),
+          ThemeAndLangWidget(),
+        ],
+      ),
+    );
   }
 }

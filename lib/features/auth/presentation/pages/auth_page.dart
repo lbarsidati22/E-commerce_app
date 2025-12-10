@@ -22,7 +22,7 @@ class AuthPage extends StatelessWidget {
                   content: Text('Successful!'),
                 ),
               );
-              Navigator.of(context).pushReplacementNamed(AppRoutes.home);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.navBar);
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -48,7 +48,7 @@ class AuthPage extends StatelessWidget {
                       child: Column(
                         children: [
                           // Theme and Language Switcher
-                          // ThemeAndLangWidget(),
+                          //  ThemeAndLangWidget(),
                           SizedBox(height: 16),
                           TabBar(
                             isScrollable: true,
@@ -59,7 +59,8 @@ class AuthPage extends StatelessWidget {
                             dividerColor: Theme.of(
                               context,
                             ).colorScheme.onSecondary.withAlpha(120),
-                            labelStyle: Theme.of(context).textTheme.titleSmall,
+                            labelStyle: Theme.of(context).textTheme.titleLarge!
+                                .copyWith(fontWeight: FontWeight.w600),
                             tabs: [
                               Tab(text: context.l10n.signIn),
                               Tab(text: context.l10n.signUp),

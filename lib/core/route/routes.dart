@@ -3,7 +3,7 @@ import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/route/app_routes.dart';
 import 'package:Ecommerce/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:Ecommerce/features/auth/presentation/pages/auth_page.dart';
-import 'package:Ecommerce/features/home/presentation/pages/home_page.dart';
+import 'package:Ecommerce/features/navBar/presentation/pages/nav_bar_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,8 +18,8 @@ abstract class Routes {
             child: const AuthPage(),
           ),
         );
-      case AppRoutes.home:
-        return MaterialPageRoute(builder: (context) => const HomePage());
+      case AppRoutes.navBar:
+        return MaterialPageRoute(builder: (context) => const NavBarLayout());
 
       default:
         return MaterialPageRoute(builder: (context) => const NotFoundScreen());
@@ -76,7 +76,7 @@ class NotFoundScreen extends StatelessWidget {
                   width: context.width * 0.6,
                   child: FilledButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.home);
+                      Navigator.pushReplacementNamed(context, AppRoutes.navBar);
                     },
                     child: const Text("Go to Home"),
                   ),

@@ -110,6 +110,7 @@ abstract class AppTheme {
           brightness: Brightness.light,
           primary: ColorsLight.mainColor, // Brand Blue
           onPrimary: ColorsLight.white,
+          primaryContainer: ColorsLight.cardColor,
           secondary: ColorsLight.secondaryColor, // Light Blue
           onSecondary: ColorsLight.black,
           error: ColorsLight.error,

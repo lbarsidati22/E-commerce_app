@@ -150,7 +150,9 @@ class _RegisterTabState extends State<RegisterTab> {
                       onPressed: _submit,
                       child: Text(
                         context.l10n.signUp,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     );
                   },

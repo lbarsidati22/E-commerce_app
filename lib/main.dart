@@ -40,10 +40,10 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: state.locale,
             onGenerateRoute: Routes.generateRoute,
-            // initialRoute: (token != null && token!.isNotEmpty)
-            //     ? AppRoutes.home
-            //     : AppRoutes.authPage,
-            initialRoute: AppRoutes.authPage,
+            initialRoute: (token != null && token!.isNotEmpty)
+                ? AppRoutes.navBar
+                : AppRoutes.authPage,
+            // initialRoute: AppRoutes.authPage,
           );
         },
       ),
