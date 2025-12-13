@@ -23,10 +23,20 @@ import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
 import '../../features/auth/domain/usecases/sign_in_usecase.dart' as _i259;
 import '../../features/auth/domain/usecases/sign_up_usecase.dart' as _i860;
 import '../../features/auth/presentation/cubit/auth_cubit.dart' as _i117;
+import '../../features/category/presentation/cubit/category_view_model.dart'
+    as _i375;
 import '../../features/home/data/data_source/contract/home_data_source.dart'
     as _i337;
 import '../../features/home/data/data_source/impl/home_remote_data_source_impl.dart'
     as _i97;
+import '../../features/home/data/repo_impl/home_repo_impl.dart' as _i886;
+import '../../features/home/domain/repo/home_repo.dart' as _i280;
+import '../../features/home/domain/use_case/get_brands_use_case.dart' as _i29;
+import '../../features/home/domain/use_case/get_categories_use_case.dart'
+    as _i215;
+import '../../features/home/domain/use_case/get_products_use_case.dart'
+    as _i370;
+import '../../features/home/presentation/cubit/home_view_model.dart' as _i174;
 import '../api_layer/api_client/api_client.dart' as _i225;
 import '../cubit/app_cubit.dart' as _i145;
 import '../modules/dio_module.dart' as _i948;
@@ -59,11 +69,35 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i337.HomeDataSource>(
       () => _i97.HomeRemoteDataSourceImpl(gh<_i225.ApiClient>()),
     );
+    gh.factory<_i280.HomeRepo>(
+      () => _i886.HomeRepoImpl(gh<_i337.HomeDataSource>()),
+    );
     gh.factory<_i824.AuthDataSource>(
       () => _i257.AuthRemoteDataSourceImpl(gh<_i225.ApiClient>()),
     );
+    gh.factory<_i215.GetCategoriesUseCase>(
+      () => _i215.GetCategoriesUseCase(gh<_i280.HomeRepo>()),
+    );
+    gh.factory<_i370.GetProductsUseCase>(
+      () => _i370.GetProductsUseCase(gh<_i280.HomeRepo>()),
+    );
+    gh.factory<_i29.GetBrandsUseCase>(
+      () => _i29.GetBrandsUseCase(gh<_i280.HomeRepo>()),
+    );
     gh.factory<_i170.AuthRepo>(
       () => _i279.AuthRepoImpl(gh<_i824.AuthDataSource>()),
+    );
+    gh.factory<_i375.CategoryViewModel>(
+      () => _i375.CategoryViewModel(
+        gh<_i215.GetCategoriesUseCase>(),
+        gh<_i370.GetProductsUseCase>(),
+      ),
+    );
+    gh.factory<_i174.HomeViewModel>(
+      () => _i174.HomeViewModel(
+        gh<_i370.GetProductsUseCase>(),
+        gh<_i29.GetBrandsUseCase>(),
+      ),
     );
     gh.factory<_i259.SignInUseCase>(
       () => _i259.SignInUseCase(gh<_i170.AuthRepo>()),
