@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/auth_cubit.dart';
 import '../widgets/login_tab.dart';
 import '../widgets/register_tab.dart';
+import 'package:Ecommerce/core/cubit/app_cubit.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -22,6 +23,7 @@ class AuthPage extends StatelessWidget {
                   content: Text('Successful!'),
                 ),
               );
+              context.read<AppCubit>().updateUser(state.user);
               Navigator.of(context).pushReplacementNamed(AppRoutes.navBar);
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(

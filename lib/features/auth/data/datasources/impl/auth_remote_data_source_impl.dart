@@ -1,7 +1,7 @@
 import 'package:Ecommerce/core/api_layer/api_client/api_client.dart';
 import 'package:Ecommerce/core/api_layer/api_result/api_result.dart';
+import 'package:Ecommerce/core/keys/shared_key.dart';
 import 'package:Ecommerce/core/modules/shared_preferences_module.dart';
-import 'package:Ecommerce/core/resources/app_constants.dart';
 import 'package:Ecommerce/features/auth/data/datasources/contract/auth_data_source.dart';
 import 'package:Ecommerce/features/auth/data/models/request/sign_in_request.dart';
 import 'package:Ecommerce/features/auth/data/models/request/sign_up_request.dart';
@@ -23,12 +23,12 @@ class AuthRemoteDataSourceImpl implements AuthDataSource {
       SignInResponse signInResponse = await _apiClient.signIn(signInRequest);
       if (signInResponse.token != null) {
         await SharedPrefHelper().setString(
-          key: AppConstants.tokenKey,
+          key: SharedPrefKeys.tokenKey,
           stringValue: signInResponse.token!,
         );
       }
 
-      return ApiSuccessResult(signInResponse.user!.toEntity());
+      return ApiSuccessResult(signInResponse.toEntity());
     } catch (e) {
       if (e is DioException) {
         final responseData = e.response?.data;
@@ -48,12 +48,12 @@ class AuthRemoteDataSourceImpl implements AuthDataSource {
       SignUpResponse signUpResponse = await _apiClient.signUp(signUpRequest);
       if (signUpResponse.token != null) {
         await SharedPrefHelper().setString(
-          key: AppConstants.tokenKey,
+          key: SharedPrefKeys.tokenKey,
           stringValue: signUpResponse.token!,
         );
       }
 
-      return ApiSuccessResult(signUpResponse.user!.toEntity());
+      return ApiSuccessResult(signUpResponse.toEntity());
     } catch (e) {
       if (e is DioException) {
         final responseData = e.response?.data;

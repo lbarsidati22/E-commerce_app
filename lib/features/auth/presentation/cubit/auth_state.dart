@@ -9,7 +9,8 @@ final class AuthInitial extends AuthState {}
 final class AuthLoading extends AuthState {}
 
 final class AuthSuccess extends AuthState {
-  const AuthSuccess();
+  final AuthEntity user;
+  AuthSuccess(this.user);
 }
 
 final class AuthError extends AuthState {
