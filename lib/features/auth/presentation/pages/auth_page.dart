@@ -36,46 +36,43 @@ class AuthPage extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DefaultTabController(
-                length: 2,
-                child: Scaffold(
-                  body: SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 50,
-                        horizontal: 12,
-                      ),
-                      child: Column(
-                        children: [
-                          // Theme and Language Switcher
-                          //  ThemeAndLangWidget(),
-                          SizedBox(height: 16),
-                          TabBar(
-                            isScrollable: true,
-                            tabAlignment: TabAlignment.start,
-                            indicatorColor: Theme.of(
-                              context,
-                            ).colorScheme.secondary,
-                            dividerColor: Theme.of(
-                              context,
-                            ).colorScheme.onSecondary.withAlpha(120),
-                            labelStyle: Theme.of(context).textTheme.titleLarge!
-                                .copyWith(fontWeight: FontWeight.w600),
-                            tabs: [
-                              Tab(text: context.l10n.signIn),
-                              Tab(text: context.l10n.signUp),
-                            ],
-                          ),
+            return DefaultTabController(
+              length: 2,
+              child: Scaffold(
+                body: SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 50,
+                      horizontal: 12,
+                    ),
+                    child: Column(
+                      children: [
+                        // Theme and Language Switcher
+                        //  ThemeAndLangWidget(),
+                        SizedBox(height: 16),
+                        TabBar(
+                          isScrollable: true,
+                          tabAlignment: TabAlignment.start,
+                          indicatorColor: Theme.of(
+                            context,
+                          ).colorScheme.secondary,
+                          dividerColor: Theme.of(
+                            context,
+                          ).colorScheme.onSecondary.withAlpha(120),
+                          labelStyle: Theme.of(context).textTheme.titleLarge!
+                              .copyWith(fontWeight: FontWeight.w600),
+                          tabs: [
+                            Tab(text: context.l10n.signIn),
+                            Tab(text: context.l10n.signUp),
+                          ],
+                        ),
 
-                          Expanded(
-                            child: TabBarView(
-                              children: [LoginTab(), RegisterTab()],
-                            ),
+                        Expanded(
+                          child: TabBarView(
+                            children: [LoginTab(), RegisterTab()],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

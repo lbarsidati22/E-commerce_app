@@ -8,7 +8,8 @@ class ColorsLight {
   static const Color fontColor = Color(0xFF06141d);
   static const Color grey = Color(0xFF9CA3AF);
   static const Color error = Color(0xFFE53935);
-  static const Color white = Color(0xffFFFFFF);
+  static const Color white = Colors.white;
   static const Color black = Color(0xff000000);
-  static const Color containerColor = Color(0xFF1a2730);
+  static Color filledColor = Colors.grey.shade300;
+  static const Color blue = Colors.blue;
 }
