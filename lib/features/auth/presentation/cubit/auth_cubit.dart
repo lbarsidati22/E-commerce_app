@@ -3,6 +3,7 @@ import 'package:Ecommerce/features/auth/data/models/request/sign_in_request.dart
 import 'package:Ecommerce/features/auth/data/models/request/sign_up_request.dart';
 import 'package:Ecommerce/features/auth/domain/usecases/sign_in_usecase.dart';
 import 'package:Ecommerce/features/auth/domain/usecases/sign_up_usecase.dart';
+import 'package:Ecommerce/features/auth/domain/entities/auth_entity.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 part 'auth_state.dart';
@@ -21,7 +22,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
     switch (result) {
       case ApiSuccessResult():
-        emit(AuthSuccess());
+        emit(AuthSuccess(result.data));
       case ApiErrorResult():
         emit(AuthError(result.errorMessage));
     }
@@ -46,7 +47,7 @@ class AuthCubit extends Cubit<AuthState> {
     );
     switch (result) {
       case ApiSuccessResult():
-        emit(AuthSuccess());
+        emit(AuthSuccess(result.data));
       case ApiErrorResult():
         emit(AuthError(result.errorMessage));
     }

@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'package:Ecommerce/core/keys/shared_key.dart';
 import 'package:Ecommerce/core/modules/shared_preferences_module.dart';
+import 'package:Ecommerce/features/auth/domain/entities/auth_entity.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -33,7 +35,17 @@ class AppCubit extends Cubit<AppState> {
       locale = Locale(savedLang);
     }
 
-    emit(state.copyWith(themeMode: themeMode, locale: locale));
+    AuthEntity? user;
+    final savedUser = _sharedPrefHelper.getString(key: SharedPrefKeys.userKey);
+    if (savedUser != null) {
+      try {
+        user = AuthEntity.fromJson(jsonDecode(savedUser));
+      } catch (e) {
+        // Handle error or ignore
+      }
+    }
+
+    emit(state.copyWith(themeMode: themeMode, locale: locale, user: user));
   }
 
   void changeTheme(ThemeMode themeMode) {
@@ -50,5 +62,19 @@ class AppCubit extends Cubit<AppState> {
       stringValue: languageCode,
     );
     emit(state.copyWith(locale: Locale(languageCode)));
+  }
+
+  void updateUser(AuthEntity user) {
+    _sharedPrefHelper.setString(
+      key: SharedPrefKeys.userKey,
+      stringValue: jsonEncode(user.toJson()),
+    );
+    if (user.token != null) {
+      _sharedPrefHelper.setString(
+        key: SharedPrefKeys.tokenKey,
+        stringValue: user.token!,
+      );
+    }
+    emit(state.copyWith(user: user));
   }
 }
