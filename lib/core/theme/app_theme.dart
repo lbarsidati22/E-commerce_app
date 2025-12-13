@@ -87,7 +87,7 @@ abstract class AppTheme {
         colorScheme: ColorScheme(
           brightness: Brightness.light,
           primary: ColorsLight.mainColor, // Brand Blue
-          onPrimary: ColorsLight.white,
+          onPrimary: ColorsLight.black,
           primaryContainer: ColorsLight.cardColor,
           secondary: ColorsLight.blue, // Light Blue
           onSecondary: ColorsLight.white,

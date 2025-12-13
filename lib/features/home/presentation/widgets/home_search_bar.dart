@@ -31,8 +31,8 @@ class HomeSearchBar extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               context.read<AppCubit>().state.themeMode == ThemeMode.dark
-                  ? Icons.dark_mode
-                  : Icons.light_mode,
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
               color: Theme.of(context).colorScheme.onSecondary,
               size: 25,
             ),

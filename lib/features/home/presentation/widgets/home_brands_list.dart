@@ -1,3 +1,4 @@
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/utils/components/custom_network_image.dart';
 import 'package:Ecommerce/features/home/domain/entities/brand_entity.dart';
 import 'package:Ecommerce/features/home/presentation/cubit/home_intent.dart';
@@ -55,7 +56,9 @@ class HomeBrandsList extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: isSelected ? Colors.blue : Colors.transparent,
+                      color: isSelected
+                          ? Theme.of(context).colorScheme.secondary
+                          : Colors.transparent,
                       width: 2,
                     ),
                   ),
@@ -79,11 +82,13 @@ class HomeBrandsList extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   name,
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: isSelected
                         ? FontWeight.bold
                         : FontWeight.normal,
-                    color: isSelected ? Colors.blue : Colors.black,
+                    color: isSelected
+                        ? context.theme.colorScheme.secondary
+                        : context.theme.colorScheme.onPrimary,
                   ),
                 ),
               ],
