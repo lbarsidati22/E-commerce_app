@@ -1,4 +1,8 @@
 import 'package:Ecommerce/core/cubit/app_cubit.dart';
+import 'package:Ecommerce/core/keys/shared_key.dart';
+import 'package:Ecommerce/core/modules/shared_preferences_module.dart';
+import 'package:Ecommerce/core/route/app_routes.dart';
+import 'package:Ecommerce/features/home/presentation/widgets/theme_and_lang_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,6 +44,8 @@ class ProfilePage extends StatelessWidget {
                         user?.email ?? "No Email",
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
+
+                      ThemeAndLangWidget(),
                     ],
                   ),
                 ),
@@ -62,9 +68,21 @@ class ProfilePage extends StatelessWidget {
                     style: TextStyle(color: Colors.red),
                   ),
                   onTap: () {
-                    // Implement logout logic if needed
-                    // context.read<AppCubit>().logout();
-                    // Navigator.pushNamedAndRemoveUntil(context, AppRoutes.authPage, (route) => false);
+                    // i want to see loeding indicator while logout process is going on
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return const Center(child: CircularProgressIndicator());
+                      },
+                    );
+                    SharedPrefHelper().removePreference(
+                      key: SharedPrefKeys.tokenKey,
+                    );
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.authPage,
+                      (route) => false,
+                    );
                   },
                 ),
               ],
