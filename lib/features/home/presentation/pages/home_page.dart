@@ -1,4 +1,3 @@
-import 'package:Ecommerce/core/cubit/app_cubit.dart';
 import 'package:Ecommerce/core/di/di.dart';
 import 'package:Ecommerce/features/home/domain/entities/brand_entity.dart';
 import 'package:Ecommerce/features/home/domain/entities/product_entity.dart';
@@ -22,17 +21,6 @@ class HomePage extends StatelessWidget {
       create: (context) =>
           getIt<HomeViewModel>()..doIntent(LoadHomeDataIntent()),
       child: Scaffold(
-        appBar: AppBar(
-          title: BlocBuilder<AppCubit, AppState>(
-            builder: (context, state) {
-              return Text("Good Morning, ${state.user?.name ?? 'Guest'}");
-            },
-          ),
-          actions: [
-            IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
-          ],
-        ),
         body: BlocBuilder<HomeViewModel, HomeState>(
           builder: (context, state) {
             if (state is HomeError) {
