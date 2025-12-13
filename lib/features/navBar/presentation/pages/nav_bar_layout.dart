@@ -24,7 +24,12 @@ class _NavBarLayoutState extends State<NavBarLayout> {
         builder: (context, state) {
           final viewModel = context.read<LayoutViewModel>();
           return Scaffold(
-            body: SafeArea(child: viewModel.tabs[viewModel.currentIndex]),
+            body: SafeArea(
+              child: IndexedStack(
+                index: viewModel.currentIndex,
+                children: viewModel.tabs,
+              ),
+            ),
             bottomNavigationBar: Container(
               margin: EdgeInsets.all(24),
               padding: EdgeInsets.symmetric(horizontal: 25),
