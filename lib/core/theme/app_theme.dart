@@ -21,28 +21,6 @@ abstract class AppTheme {
         elevation: 0,
       ),
 
-      inputDecorationTheme: InputDecorationTheme(
-        fillColor: colorScheme.surface,
-        filled: true,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4),
-          borderSide: BorderSide(color: textFormFieldBorderColor, width: 1),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4),
-          borderSide: BorderSide(color: textFormFieldBorderColor, width: 1),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4),
-          borderSide: BorderSide(color: colorScheme.error, width: 1),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(4),
-          borderSide: BorderSide(color: colorScheme.error, width: 1),
-        ),
-      ),
-
       textTheme: TextTheme(
         // Display
         displayLarge: AppStyles.bold57(
@@ -106,17 +84,18 @@ abstract class AppTheme {
       getTheme(
         context: context,
         fontFamily: languageCode == 'ar' ? 'Cairo' : 'Poppins',
-        colorScheme: const ColorScheme(
+        colorScheme: ColorScheme(
           brightness: Brightness.light,
           primary: ColorsLight.mainColor, // Brand Blue
           onPrimary: ColorsLight.white,
           primaryContainer: ColorsLight.cardColor,
-          secondary: ColorsLight.secondaryColor, // Light Blue
-          onSecondary: ColorsLight.black,
+          secondary: ColorsLight.blue, // Light Blue
+          onSecondary: ColorsLight.white,
           error: ColorsLight.error,
           onError: ColorsLight.white,
           surface: ColorsLight.background,
           onSurface: ColorsLight.fontColor,
+          onPrimaryContainer: ColorsLight.filledColor,
         ),
         textFormFieldBorderColor: ColorsLight.grey,
       );
@@ -129,13 +108,14 @@ abstract class AppTheme {
           brightness: Brightness.dark,
           primary: ColorsDark.mainColor,
           onPrimary: ColorsDark.white,
-          secondary: ColorsDark.blueDark,
+          secondary: ColorsDark.blue, // Light Blue
           primaryContainer: ColorsDark.containerColor,
           onSecondary: ColorsDark.white,
           error: Colors.red,
           onError: ColorsDark.white,
           surface: ColorsDark.mainColor, // Dark background
           onSurface: ColorsDark.white, // Text color
+          primaryFixed: ColorsLight.mainColor,
         ),
         textFormFieldBorderColor: ColorsDark.black1,
       );

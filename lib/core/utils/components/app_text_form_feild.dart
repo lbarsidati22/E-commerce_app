@@ -58,7 +58,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
     return TextFormField(
       obscuringCharacter: "★",
       controller: widget.controller,
-      cursorColor: context.colorScheme.onSecondary,
+      cursorColor: context.colorScheme.secondary,
       keyboardType: widget.keyboardType ?? TextInputType.text,
       decoration: InputDecoration(
         prefixIcon: widget.prefIcon,
@@ -66,15 +66,14 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         hintText: widget.hintText,
         hintStyle:
             widget.hintStyle ??
-            AppStyles.regular16(
-              context,
-            ).copyWith(color: context.colorScheme.onSecondary.withAlpha(70)),
+            AppStyles.regular16(context).copyWith(color: Colors.grey),
         isDense: true,
         contentPadding:
             widget.contentPadding ??
             const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         filled: true,
-        fillColor: widget.backgroundColor ?? Colors.transparent,
+        fillColor:
+            widget.backgroundColor ?? context.colorScheme.primaryContainer,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide(
@@ -83,7 +82,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: context.colorScheme.onSecondary),
+          borderSide: BorderSide(color: context.colorScheme.secondary),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -102,7 +101,7 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                 },
                 icon: Icon(
                   isObscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Theme.of(context).colorScheme.onSecondary,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               )
             : widget.suffixIcon,

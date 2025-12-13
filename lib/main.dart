@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
             title: 'E-commerce App',
             theme: AppTheme.lightTheme(context, state.locale.languageCode),
             darkTheme: AppTheme.darkTheme(context, state.locale.languageCode),
-            themeMode: state.themeMode,
+            themeMode: ThemeMode.light,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             locale: state.locale,
