@@ -20,8 +20,8 @@ class SignUpResponse {
     return _$SignUpResponseFromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _$SignUpResponseToJson(this);
+  AuthEntity toEntity() {
+    return AuthEntity(name: user?.name, email: user?.email, token: token);
   }
 }
 

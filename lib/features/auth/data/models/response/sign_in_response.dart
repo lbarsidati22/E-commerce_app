@@ -24,6 +24,6 @@ class SignInResponse {
   }
 
   AuthEntity toEntity() {
-    return AuthEntity(name: user?.name, email: user?.email);
+    return AuthEntity(name: user?.name, email: user?.email, token: token);
   }
 }

@@ -16,14 +16,6 @@ SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) =>
       error: json['error'] as String?,
     );
 
-Map<String, dynamic> _$SignUpResponseToJson(SignUpResponse instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'error': instance.error,
-      'user': instance.user,
-      'token': instance.token,
-    };
-
 UserDto _$UserDtoFromJson(Map<String, dynamic> json) => UserDto(
   name: json['name'] as String?,
   email: json['email'] as String?,
