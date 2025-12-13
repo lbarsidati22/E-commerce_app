@@ -38,11 +38,7 @@ class CustomButton extends StatelessWidget {
         elevation: elevation,
       ),
       child: isLoading
-          ? CircularProgressIndicator.adaptive(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                Theme.of(context).colorScheme.onSecondary,
-              ),
-            )
+          ? CircularProgressIndicator.adaptive(backgroundColor: Colors.white)
           : child,
     );
   }

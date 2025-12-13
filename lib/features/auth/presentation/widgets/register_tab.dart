@@ -152,6 +152,7 @@ class _RegisterTabState extends State<RegisterTab> {
                         context.l10n.signUp,
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           fontWeight: FontWeight.w600,
+                          color: context.colorScheme.onSecondary,
                         ),
                       ),
                     );
