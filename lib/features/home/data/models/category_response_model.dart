@@ -1,5 +1,6 @@
 import 'package:Ecommerce/features/home/data/models/category_model.dart';
 import 'package:Ecommerce/features/home/data/models/metadata_model.dart';
+import 'package:Ecommerce/features/home/domain/entities/category_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'category_response_model.g.dart';
@@ -21,5 +22,13 @@ class CategoryResponseModel {
 
   Map<String, dynamic> toJson() {
     return _$CategoryResponseModelToJson(this);
+  }
+
+  CategoryResponseEntity toEntity() {
+    return CategoryResponseEntity(
+      results: results,
+      metadata: metadata?.toEntity(),
+      data: data?.map((e) => e.toEntity()).toList(),
+    );
   }
 }
