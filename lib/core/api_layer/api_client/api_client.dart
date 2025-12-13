@@ -2,6 +2,7 @@ import 'package:Ecommerce/features/auth/data/models/request/sign_in_request.dart
 import 'package:Ecommerce/features/auth/data/models/request/sign_up_request.dart';
 import 'package:Ecommerce/features/auth/data/models/response/sign_in_response.dart';
 import 'package:Ecommerce/features/auth/data/models/response/sign_up_response.dart';
+import 'package:Ecommerce/features/home/data/models/brand_response_model.dart';
 import 'package:Ecommerce/features/home/data/models/category_response_model.dart';
 import 'package:Ecommerce/features/home/data/models/products_response_model.dart';
 import 'package:dio/dio.dart';
@@ -27,8 +28,14 @@ abstract class ApiClient {
 
   //HOME
   @GET(Endpoints.getAllProducts)
-  Future<ProductsResponseModel> getAllProducts();
+  Future<ProductsResponseModel> getAllProducts({
+    @Query("brand") String? brandId,
+    @Query("category") String? categoryId, // guessed param name "category"
+  });
 
   @GET(Endpoints.getAllCategories)
   Future<CategoryResponseModel> getAllCategories();
+
+  @GET(Endpoints.getBrands)
+  Future<BrandResponseModel> getAllBrands();
 }

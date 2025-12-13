@@ -1,6 +1,6 @@
 import 'package:Ecommerce/core/api_layer/api_client/endpoints.dart';
+import 'package:Ecommerce/core/keys/shared_key.dart';
 import 'package:Ecommerce/core/modules/shared_preferences_module.dart';
-import 'package:Ecommerce/core/resources/app_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -11,10 +11,10 @@ abstract class DioModule {
   PrettyDioLogger providePrettyDioLogger() {
     return PrettyDioLogger(
       request: true,
-      requestBody: true,
-      responseBody: true,
-      requestHeader: true,
-      responseHeader: true,
+      requestBody: false,
+      responseBody: false,
+      requestHeader: false,
+      responseHeader: false,
       compact: true,
     );
   }
@@ -35,7 +35,9 @@ abstract class DioModule {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          final token = sharedPrefHelper.getString(key: AppConstants.tokenKey);
+          final token = sharedPrefHelper.getString(
+            key: SharedPrefKeys.tokenKey,
+          );
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
           }
