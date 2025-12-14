@@ -20,7 +20,7 @@ class AuthPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   backgroundColor: Colors.green,
-                  content: Text('Successful!'),
+                  content: Text(context.l10n.successful),
                 ),
               );
               context.read<AppCubit>().updateUser(state.user);
