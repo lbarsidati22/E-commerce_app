@@ -1,9 +1,12 @@
 import 'package:Ecommerce/core/di/di.dart';
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
+import 'package:Ecommerce/core/utils/shared_blured_container.dart';
 import 'package:Ecommerce/features/home/domain/entities/category_entity.dart';
 import 'package:Ecommerce/features/home/domain/entities/product_entity.dart';
 import 'package:Ecommerce/features/category/presentation/cubit/category_intent.dart';
 import 'package:Ecommerce/features/category/presentation/cubit/category_view_model.dart';
 import 'package:Ecommerce/features/home/presentation/pages/product_details_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -17,13 +20,6 @@ class CategoryPage extends StatelessWidget {
       create: (context) =>
           getIt<CategoryViewModel>()..doIntent(LoadCategoryResultIntent()),
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Category"),
-          actions: [
-            IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
-          ],
-        ),
         body: BlocBuilder<CategoryViewModel, CategoryState>(
           builder: (context, state) {
             if (state is CategoryError) {
@@ -48,19 +44,12 @@ class CategoryPage extends StatelessWidget {
                   6,
                   (index) => ProductEntity(title: "Product Title", price: 1234),
                 );
-
             return CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: _buildSearchBar(),
-                  ),
-                ),
-                SliverToBoxAdapter(
                   child: Skeletonizer(
                     enabled: isLoading,
-                    child: _buildSectionTitle(context, "Categories"),
+                    child: _buildSectionTitle(context, context.l10n.categories),
                   ),
                 ),
                 SliverToBoxAdapter(
@@ -76,7 +65,7 @@ class CategoryPage extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: Skeletonizer(
                     enabled: isLoading, // Only initial loading
-                    child: _buildSectionTitle(context, "Products"),
+                    child: _buildSectionTitle(context, context.l10n.products),
                   ),
                 ),
                 if (isProductsLoading &&
@@ -124,23 +113,6 @@ class CategoryPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchBar() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: const TextField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: "Search what you want...",
-          prefixIcon: Icon(Icons.search),
-        ),
-      ),
-    );
-  }
-
   Widget _buildSectionTitle(BuildContext context, String title) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -154,7 +126,7 @@ class CategoryPage extends StatelessWidget {
             ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
           ),
           Text(
-            "View All",
+            context.l10n.view_all,
             style: Theme.of(
               context,
             ).textTheme.bodyMedium?.copyWith(color: Colors.blue),
@@ -183,7 +155,7 @@ class CategoryPage extends StatelessWidget {
 
           if (index == 0) {
             currentId = null;
-            name = "All";
+            name = context.l10n.all;
             image = null;
             isSelected = selectedCategoryId == null;
           } else {
@@ -229,7 +201,7 @@ class CategoryPage extends StatelessWidget {
                           : null,
                     ),
                     child: index == 0
-                        ? const Icon(Icons.category, color: Colors.blue)
+                        ? const Icon(Icons.category_sharp, color: Colors.blue)
                         : null,
                   ),
                   const SizedBox(height: 5),
@@ -239,7 +211,9 @@ class CategoryPage extends StatelessWidget {
                       fontWeight: isSelected
                           ? FontWeight.bold
                           : FontWeight.normal,
-                      color: isSelected ? Colors.blue : Colors.black,
+                      color: isSelected
+                          ? context.theme.colorScheme.secondary
+                          : context.theme.colorScheme.onSurface,
                     ),
                   ),
                 ],
@@ -261,9 +235,9 @@ class CategoryPage extends StatelessWidget {
           ),
         );
       },
-      child: Card(
-        elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: SharedBluredContainer(
+        borderRadius: 15,
+        padding: EdgeInsets.zero,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -336,7 +310,9 @@ class CategoryPage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text("Review (${product.ratingsAverage})"),
+                      Text(
+                        "${context.l10n.review} (${product.ratingsAverage})",
+                      ),
                       const Icon(Icons.star, color: Colors.amber, size: 15),
                       const Spacer(),
                       const Icon(Icons.add_circle, color: Colors.blue),
