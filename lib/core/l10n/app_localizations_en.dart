@@ -284,6 +284,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailCanNotBeEmpty => 'Email cannot be empty';
 
   @override
+  String get brands => 'Brands';
+
+  @override
+  String get view_all => 'View All';
+
+  @override
+  String get products => 'Products';
+
+  @override
+  String get goodMorning => 'Good Morning';
+
+  @override
+  String get productDetails => 'Product Details';
+
+  @override
+  String get all => 'All';
+
+  @override
   String get status => 'Status';
 
   @override
@@ -306,6 +324,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get add_to_cart => 'Add to cart';
 
   @override
+  String get settings => 'Settings';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
   String get pink_roses => 'Pink roses:15';
 
   @override
@@ -313,9 +337,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get flowery => 'Flowery';
-
-  @override
-  String get view_all => 'View All';
 
   @override
   String get best_seller => 'Best Seller';
@@ -460,4 +481,43 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addressDetails => 'Address Details';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get guestUser => 'Guest User';
+
+  @override
+  String get noEmail => 'No Email';
+
+  @override
+  String get yourCartIsEmpty => 'Your cart is empty';
+
+  @override
+  String get review => 'Review';
+
+  @override
+  String get totalPrice => 'Total Price';
+
+  @override
+  String get addingToCart => 'Adding to cart...';
+
+  @override
+  String get successful => 'Successful';
 }
