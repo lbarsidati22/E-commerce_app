@@ -1,4 +1,5 @@
 import 'package:Ecommerce/core/di/di.dart';
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/features/home/domain/entities/brand_entity.dart';
 import 'package:Ecommerce/features/home/domain/entities/product_entity.dart';
 import 'package:Ecommerce/features/home/presentation/cubit/home_intent.dart';
@@ -36,7 +37,8 @@ class HomePage extends StatelessWidget {
                 ? state.brands!
                 : List.generate(
                     5,
-                    (index) => BrandEntity(name: "Brand", image: ""),
+                    (index) =>
+                        BrandEntity(name: context.l10n.brands, image: ""),
                   );
             final products = (state is HomeSuccess && state.products != null)
                 ? state.products!
@@ -58,27 +60,24 @@ class HomePage extends StatelessWidget {
                   child: Skeletonizer(
                     enabled: isLoading,
                     child: HomeSectionTitle(
-                      title: "Brands",
+                      title: context.l10n.brands,
                       onViewAllTap: () {},
                     ),
                   ),
                 ),
                 SliverToBoxAdapter(
-                  child: Skeletonizer(
-                    enabled: isLoading,
-                    child: HomeBrandsList(
-                      brands: brands,
-                      selectedBrandId: state is HomeSuccess
-                          ? state.selectedBrandId
-                          : null,
-                    ),
+                  child: HomeBrandsList(
+                    brands: brands,
+                    selectedBrandId: state is HomeSuccess
+                        ? state.selectedBrandId
+                        : null,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: Skeletonizer(
                     enabled: isLoading || isProductsLoading,
                     child: HomeSectionTitle(
-                      title: "Products",
+                      title: context.l10n.products,
                       onViewAllTap: () {},
                     ),
                   ),

@@ -1,7 +1,11 @@
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:Ecommerce/core/utils/components/custom_network_image.dart';
+import 'package:Ecommerce/core/utils/shared_blured_container.dart';
 import 'package:Ecommerce/features/home/domain/entities/product_entity.dart';
 import 'package:Ecommerce/features/home/presentation/pages/product_details_page.dart';
+import 'package:Ecommerce/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeProductItem extends StatelessWidget {
   final ProductEntity product;
@@ -19,9 +23,9 @@ class HomeProductItem extends StatelessWidget {
           ),
         );
       },
-      child: Card(
-        elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: SharedBluredContainer(
+        borderRadius: 15,
+        padding: const EdgeInsets.all(0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -39,23 +43,15 @@ class HomeProductItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 8,
-                    right: 8,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 15,
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        icon: const Icon(
-                          Icons.favorite_border,
-                          size: 20,
-                          color: Colors.blue,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   top: 8,
+                  //   right: 8,
+                  //   child: CircleAvatar(
+                  //     backgroundColor: Colors.white,
+                  //     radius: 15,
+                  //     child:,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -94,10 +90,36 @@ class HomeProductItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text("Review (${product.ratingsAverage})"),
+                      Text(
+                        "${context.l10n.review} (${product.ratingsAverage})",
+                      ),
                       const Icon(Icons.star, color: Colors.amber, size: 15),
                       const Spacer(),
-                      const Icon(Icons.add_circle, color: Colors.blue),
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          icon: const Icon(
+                            Icons.add_shopping_cart,
+                            size: 20,
+                            color: Colors.blue,
+                          ),
+                          onPressed: () {
+                            context.read<CartCubit>().addProductToCart(
+                              product.id ?? "",
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(context.l10n.addingToCart),
+                                duration: Duration(milliseconds: 500),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ],

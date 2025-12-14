@@ -1,4 +1,8 @@
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
+import 'package:Ecommerce/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:Ecommerce/features/cart/presentation/cubit/cart_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddToCartButton extends StatelessWidget {
   final double price;
@@ -16,7 +20,10 @@ class AddToCartButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Total Price", style: TextStyle(color: Colors.grey)),
+              Text(
+                context.l10n.totalPrice,
+                style: TextStyle(color: Colors.grey),
+              ),
               Text(
                 "$price EGP",
                 style: const TextStyle(
@@ -38,14 +45,16 @@ class AddToCartButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.shopping_cart),
-                  SizedBox(width: 8),
-                  Text("Add to cart"),
-                ],
-              ),
+              child: context.read<CartCubit>().state is AddToCartLoading
+                  ? const CircularProgressIndicator()
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.shopping_cart),
+                        SizedBox(width: 8),
+                        Text(context.l10n.add_to_cart),
+                      ],
+                    ),
             ),
           ),
         ],
