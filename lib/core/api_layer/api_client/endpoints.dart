@@ -5,4 +5,6 @@ class Endpoints {
   static const String getAllProducts = "/products";
   static const String getAllCategories = "/categories";
   static const String getBrands = "/brands";
+  static const String addProductToCart = "/cart";
+  static const String getCart = "/cart";
 }

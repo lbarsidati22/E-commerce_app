@@ -39,7 +39,7 @@ abstract class DioModule {
             key: SharedPrefKeys.tokenKey,
           );
           if (token != null && token.isNotEmpty) {
-            options.headers['Authorization'] = 'Bearer $token';
+            options.headers['token'] = token;
           }
           handler.next(options);
         },
