@@ -23,6 +23,15 @@ import '../../features/auth/domain/repo/auth_repo.dart' as _i170;
 import '../../features/auth/domain/usecases/sign_in_usecase.dart' as _i259;
 import '../../features/auth/domain/usecases/sign_up_usecase.dart' as _i860;
 import '../../features/auth/presentation/cubit/auth_cubit.dart' as _i117;
+import '../../features/cart/data/data_sources/cart_remote_data_source.dart'
+    as _i164;
+import '../../features/cart/data/repositories/cart_repository_impl.dart'
+    as _i642;
+import '../../features/cart/domain/repositories/cart_repository.dart' as _i322;
+import '../../features/cart/domain/use_cases/add_to_cart_use_case.dart'
+    as _i252;
+import '../../features/cart/domain/use_cases/get_cart_use_case.dart' as _i176;
+import '../../features/cart/presentation/cubit/cart_cubit.dart' as _i499;
 import '../../features/category/presentation/cubit/category_view_model.dart'
     as _i375;
 import '../../features/home/data/data_source/contract/home_data_source.dart'
@@ -68,6 +77,24 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i225.ApiClient>(() => _i225.ApiClient.new(gh<_i361.Dio>()));
     gh.factory<_i337.HomeDataSource>(
       () => _i97.HomeRemoteDataSourceImpl(gh<_i225.ApiClient>()),
+    );
+    gh.factory<_i164.CartRemoteDataSource>(
+      () => _i164.CartRemoteDataSourceImpl(gh<_i225.ApiClient>()),
+    );
+    gh.factory<_i322.CartRepository>(
+      () => _i642.CartRepositoryImpl(gh<_i164.CartRemoteDataSource>()),
+    );
+    gh.factory<_i252.AddToCartUseCase>(
+      () => _i252.AddToCartUseCase(gh<_i322.CartRepository>()),
+    );
+    gh.factory<_i176.GetCartUseCase>(
+      () => _i176.GetCartUseCase(gh<_i322.CartRepository>()),
+    );
+    gh.factory<_i499.CartCubit>(
+      () => _i499.CartCubit(
+        gh<_i252.AddToCartUseCase>(),
+        gh<_i176.GetCartUseCase>(),
+      ),
     );
     gh.factory<_i280.HomeRepo>(
       () => _i886.HomeRepoImpl(gh<_i337.HomeDataSource>()),

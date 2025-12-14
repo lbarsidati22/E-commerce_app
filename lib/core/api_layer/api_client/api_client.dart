@@ -5,6 +5,7 @@ import 'package:Ecommerce/features/auth/data/models/response/sign_up_response.da
 import 'package:Ecommerce/features/home/data/models/brand_response_model.dart';
 import 'package:Ecommerce/features/home/data/models/category_response_model.dart';
 import 'package:Ecommerce/features/home/data/models/products_response_model.dart';
+import 'package:Ecommerce/features/home/data/models/cart_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -38,4 +39,11 @@ abstract class ApiClient {
 
   @GET(Endpoints.getBrands)
   Future<BrandResponseModel> getAllBrands();
+
+  // CART
+  @POST(Endpoints.addProductToCart)
+  Future<CartResponseModel> addProductToCart(@Body() Map<String, dynamic> body);
+
+  @GET(Endpoints.getCart)
+  Future<CartResponseModel> getCart();
 }
