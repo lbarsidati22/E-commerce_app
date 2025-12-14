@@ -14,15 +14,14 @@ class ProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   children: [
                     InkWell(
                       onTap: () {
@@ -47,14 +46,14 @@ class ProductDetailsPage extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: 24),
-              ProductGallery(
-                images: product.images ?? [product.imageCover ?? ""],
-              ),
-              const SizedBox(height: 24),
-              ProductDetailsInfo(product: product),
-            ],
+                const SizedBox(height: 24),
+                ProductGallery(
+                  images: product.images ?? [product.imageCover ?? ""],
+                ),
+                const SizedBox(height: 24),
+                ProductDetailsInfo(product: product),
+              ],
+            ),
           ),
         ),
       ),

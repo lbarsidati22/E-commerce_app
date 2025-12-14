@@ -13,7 +13,7 @@ class HomeSearchBar extends StatelessWidget {
         Row(
           children: [
             Text(
-              '${context.l10n.goodMorning} !',
+              '${context.l10n.hi} !',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             Text(
