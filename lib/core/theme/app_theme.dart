@@ -21,62 +21,66 @@ abstract class AppTheme {
         elevation: 0,
       ),
 
-      textTheme: TextTheme(
-        // Display
-        displayLarge: AppStyles.bold57(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        displayMedium: AppStyles.medium45(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        displaySmall: AppStyles.regular36(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
+      textTheme:
+          TextTheme(
+            // Display
+            displayLarge: AppStyles.bold57(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            displayMedium: AppStyles.medium45(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            displaySmall: AppStyles.regular36(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
 
-        // Headline
-        headlineLarge: AppStyles.regular32(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        headlineMedium: AppStyles.regular28(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        headlineSmall: AppStyles.regular24(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
+            // Headline
+            headlineLarge: AppStyles.regular32(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            headlineMedium: AppStyles.regular28(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            headlineSmall: AppStyles.regular24(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
 
-        // Title
-        titleLarge: AppStyles.regular22(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        titleMedium: AppStyles.semiBold16(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        titleSmall: AppStyles.medium14(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
+            // Title
+            titleLarge: AppStyles.regular22(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            titleMedium: AppStyles.semiBold16(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            titleSmall: AppStyles.medium14(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
 
-        // Body
-        bodyLarge: AppStyles.regular16(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        bodyMedium: AppStyles.regular14(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        bodySmall: AppStyles.regular12(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
+            // Body
+            bodyLarge: AppStyles.regular16(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            bodyMedium: AppStyles.regular14(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            bodySmall: AppStyles.regular12(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
 
-        // Label
-        labelLarge: AppStyles.medium14(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        labelMedium: AppStyles.medium12(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-        labelSmall: AppStyles.medium11(
-          context,
-        ).copyWith(color: colorScheme.onSurface),
-      ),
+            // Label
+            labelLarge: AppStyles.medium14(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            labelMedium: AppStyles.medium12(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+            labelSmall: AppStyles.medium11(
+              context,
+            ).copyWith(color: colorScheme.onSurface),
+          ).apply(
+            displayColor: colorScheme.onSurface,
+            bodyColor: colorScheme.onSurface,
+          ),
     );
   }
 
@@ -84,7 +88,7 @@ abstract class AppTheme {
       getTheme(
         context: context,
         fontFamily: languageCode == 'ar' ? 'Cairo' : 'Poppins',
-        colorScheme: ColorScheme(
+        colorScheme: const ColorScheme(
           brightness: Brightness.light,
           primary: ColorsLight.mainColor, // Brand Blue
           onPrimary: ColorsLight.black,
@@ -95,7 +99,6 @@ abstract class AppTheme {
           onError: ColorsLight.white,
           surface: ColorsLight.background,
           onSurface: ColorsLight.fontColor,
-          onPrimaryContainer: ColorsLight.filledColor,
         ),
         textFormFieldBorderColor: ColorsLight.grey,
       );

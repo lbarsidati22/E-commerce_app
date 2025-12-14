@@ -281,6 +281,24 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emailCanNotBeEmpty => 'البريد الالكتروني يجب ان لا يكون فارغا';
 
   @override
+  String get brands => 'العلامات التجارية';
+
+  @override
+  String get view_all => 'عرض الكل';
+
+  @override
+  String get products => 'المنتجات';
+
+  @override
+  String get goodMorning => 'صباح الخير';
+
+  @override
+  String get productDetails => 'تفاصيل المنتج';
+
+  @override
+  String get all => 'الكل';
+
+  @override
   String get status => 'الحالة';
 
   @override
@@ -302,6 +320,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get add_to_cart => 'أضف إلى السلة';
 
   @override
+  String get settings => 'الاعدادات';
+
+  @override
+  String get logout => 'خروج';
+
+  @override
   String get pink_roses => 'ورود وردية: 15';
 
   @override
@@ -309,9 +333,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get flowery => 'زهري';
-
-  @override
-  String get view_all => 'عرض الكل';
 
   @override
   String get best_seller => 'الأكثر مبيعًا';
@@ -456,4 +477,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get addressDetails => 'تفاصيل العنوان';
+
+  @override
+  String get theme => 'المظهر';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get darkMode => 'الوضع الليلي';
+
+  @override
+  String get english => 'الانجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get account => 'الحساب';
+
+  @override
+  String get guestUser => 'زائر';
+
+  @override
+  String get noEmail => 'لا يوجد بريد إلكتروني';
+
+  @override
+  String get yourCartIsEmpty => 'عربة التسوق فارغة';
+
+  @override
+  String get review => 'مراجعة';
+
+  @override
+  String get totalPrice => 'السعر الكلي';
+
+  @override
+  String get addingToCart => 'جاري الاضافة الي السلة...';
+
+  @override
+  String get successful => 'ناجح';
 }

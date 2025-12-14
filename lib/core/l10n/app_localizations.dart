@@ -626,6 +626,42 @@ abstract class AppLocalizations {
   /// **'Email cannot be empty'**
   String get emailCanNotBeEmpty;
 
+  /// No description provided for @brands.
+  ///
+  /// In en, this message translates to:
+  /// **'Brands'**
+  String get brands;
+
+  /// No description provided for @view_all.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get view_all;
+
+  /// No description provided for @products.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get products;
+
+  /// No description provided for @goodMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Morning'**
+  String get goodMorning;
+
+  /// No description provided for @productDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Details'**
+  String get productDetails;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
   /// No description provided for @status.
   ///
   /// In en, this message translates to:
@@ -668,6 +704,18 @@ abstract class AppLocalizations {
   /// **'Add to cart'**
   String get add_to_cart;
 
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
   /// No description provided for @pink_roses.
   ///
   /// In en, this message translates to:
@@ -685,12 +733,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Flowery'**
   String get flowery;
-
-  /// No description provided for @view_all.
-  ///
-  /// In en, this message translates to:
-  /// **'View All'**
-  String get view_all;
 
   /// No description provided for @best_seller.
   ///
@@ -979,6 +1021,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Address Details'**
   String get addressDetails;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
+  /// No description provided for @account.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get account;
+
+  /// No description provided for @guestUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest User'**
+  String get guestUser;
+
+  /// No description provided for @noEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'No Email'**
+  String get noEmail;
+
+  /// No description provided for @yourCartIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty'**
+  String get yourCartIsEmpty;
+
+  /// No description provided for @review.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get review;
+
+  /// No description provided for @totalPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Price'**
+  String get totalPrice;
+
+  /// No description provided for @addingToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Adding to cart...'**
+  String get addingToCart;
+
+  /// No description provided for @successful.
+  ///
+  /// In en, this message translates to:
+  /// **'Successful'**
+  String get successful;
 }
 
 class _AppLocalizationsDelegate
