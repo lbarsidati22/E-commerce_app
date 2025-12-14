@@ -1,4 +1,4 @@
-import 'package:Ecommerce/features/card/presentation/pages/card_page.dart';
+import 'package:Ecommerce/features/cart/presentation/pages/cart_page.dart';
 import 'package:Ecommerce/features/category/presentation/pages/category_page.dart';
 import 'package:Ecommerce/features/home/presentation/pages/home_page.dart';
 import 'package:Ecommerce/features/navBar/presentation/cubit/navbar_state.dart';
@@ -39,7 +39,7 @@ class LayoutViewModel extends Cubit<LayoutState> {
     //    child:
     HomePage(),
     CategoryPage(),
-    CardPage(),
+    CartPage(),
     ProfilePage(),
   ];
 

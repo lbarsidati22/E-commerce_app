@@ -1,3 +1,4 @@
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:flutter/material.dart';
 
 class HomeSectionTitle extends StatelessWidget {
@@ -15,14 +16,15 @@ class HomeSectionTitle extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
           ),
           InkWell(
             onTap: onViewAllTap,
             child: Text(
-              "View All",
+              context.l10n.view_all,
               style: Theme.of(
                 context,
               ).textTheme.bodyMedium?.copyWith(color: Colors.blue),

@@ -3,6 +3,7 @@ import 'package:Ecommerce/core/utils/components/custom_network_image.dart';
 import 'package:Ecommerce/features/home/domain/entities/brand_entity.dart';
 import 'package:Ecommerce/features/home/presentation/cubit/home_intent.dart';
 import 'package:Ecommerce/features/home/presentation/cubit/home_view_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +30,7 @@ class HomeBrandsList extends StatelessWidget {
 
           if (index == 0) {
             currentId = null;
-            name = "All";
+            name = context.l10n.all;
             image = null;
             isSelected = selectedBrandId == null;
           } else {
@@ -67,10 +68,15 @@ class HomeBrandsList extends StatelessWidget {
                     width: 60,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: index == 0 ? Colors.grey[200] : Colors.white,
+                      color: index == 0
+                          ? context.theme.colorScheme.secondary.withOpacity(0.1)
+                          : context.theme.colorScheme.primaryContainer,
                     ),
                     child: index == 0
-                        ? const Icon(Icons.home, color: Colors.blue)
+                        ? Icon(
+                            CupertinoIcons.home,
+                            color: context.theme.colorScheme.secondary,
+                          )
                         : ClipOval(
                             child: CustomNetworkImage(
                               imageUrl: image,
@@ -88,7 +94,7 @@ class HomeBrandsList extends StatelessWidget {
                         : FontWeight.normal,
                     color: isSelected
                         ? context.theme.colorScheme.secondary
-                        : context.theme.colorScheme.onPrimary,
+                        : context.theme.colorScheme.onSurface,
                   ),
                 ),
               ],

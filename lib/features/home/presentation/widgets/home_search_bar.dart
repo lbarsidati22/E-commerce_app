@@ -1,4 +1,5 @@
 import 'package:Ecommerce/core/cubit/app_cubit.dart';
+import 'package:Ecommerce/core/extensions/project_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,7 +12,10 @@ class HomeSearchBar extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text('Hello !', style: Theme.of(context).textTheme.headlineLarge),
+            Text(
+              '${context.l10n.goodMorning} !',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
             Text(
               ' ${context.read<AppCubit>().state.user!.name}',
               style: Theme.of(
