@@ -662,6 +662,12 @@ abstract class AppLocalizations {
   /// **'All'**
   String get all;
 
+  /// No description provided for @hi.
+  ///
+  /// In en, this message translates to:
+  /// **'Hi'**
+  String get hi;
+
   /// No description provided for @status.
   ///
   /// In en, this message translates to:

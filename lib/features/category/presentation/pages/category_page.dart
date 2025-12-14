@@ -6,7 +6,6 @@ import 'package:Ecommerce/features/home/domain/entities/product_entity.dart';
 import 'package:Ecommerce/features/category/presentation/cubit/category_intent.dart';
 import 'package:Ecommerce/features/category/presentation/cubit/category_view_model.dart';
 import 'package:Ecommerce/features/home/presentation/pages/product_details_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -31,7 +30,6 @@ class CategoryPage extends StatelessWidget {
             final successState = state is CategorySuccess ? state : null;
             final isProductsLoading = successState?.isProductsLoading ?? false;
 
-            // Mock data for Skeletonizer or when null
             final categories =
                 successState?.categories ??
                 List.generate(
@@ -71,9 +69,6 @@ class CategoryPage extends StatelessWidget {
                 if (isProductsLoading &&
                     successState?.products != null &&
                     successState!.products!.isNotEmpty)
-                  // When filtering and we have old products to show while loading new ones?
-                  // Usually we clear or show skeleton.
-                  // Let's show skeleton grid.
                   SliverGrid(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -183,6 +178,7 @@ class CategoryPage extends StatelessWidget {
                     ? Border.all(color: Colors.blue, width: 2)
                     : Border.all(color: Colors.transparent),
                 borderRadius: BorderRadius.circular(10),
+                // ignore: deprecated_member_use
                 color: isSelected ? Colors.blue.withOpacity(0.1) : null,
               ),
               child: Column(

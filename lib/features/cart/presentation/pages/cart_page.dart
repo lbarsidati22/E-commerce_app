@@ -41,15 +41,9 @@ class _CartPageState extends State<CartPage> {
               },
             );
           } else if (state is AddToCartSuccess || state is AddToCartLoading) {
-            // If we just added to cart, we might want to re-fetch or just show the previous state
-            // But usually AddToCart doesn't return the full cart.
-            // Ideally valid state management would handle this.
-            // For now, let's just trigger a re-fetch if we somehow land here, or show loading.
             context.read<CartCubit>().getCart();
             return const Center(child: CircularProgressIndicator());
-          }
-          // Fallback for initial
-          else if (state is CartInitial) {
+          } else if (state is CartInitial) {
             return const Center(child: CircularProgressIndicator());
           }
           return const SizedBox.shrink();

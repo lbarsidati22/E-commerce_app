@@ -19,7 +19,7 @@ class HomeBrandsList extends StatelessWidget {
       height: 120,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: brands.length + 1, // +1 for "All" button
+        itemCount: brands.length + 1,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         separatorBuilder: (context, index) => const SizedBox(width: 16),
         itemBuilder: (context, index) {
@@ -53,7 +53,7 @@ class HomeBrandsList extends StatelessWidget {
               children: [
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  padding: const EdgeInsets.all(2), // Border width
+                  padding: const EdgeInsets.all(2),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(

@@ -14,7 +14,6 @@ class _ProductGalleryState extends State<ProductGallery> {
 
   @override
   Widget build(BuildContext context) {
-    // If no images, show placeholder
     if (widget.images.isEmpty) {
       return SizedBox(
         height: 300,
@@ -25,7 +24,6 @@ class _ProductGalleryState extends State<ProductGallery> {
 
     return Column(
       children: [
-        // Main Image
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           child: Container(
@@ -48,13 +46,12 @@ class _ProductGalleryState extends State<ProductGallery> {
               borderRadius: BorderRadius.circular(16),
               child: CustomNetworkImage(
                 imageUrl: widget.images[_selectedIndex],
-                fit: BoxFit.contain, // Contain to show full product
+                fit: BoxFit.contain,
               ),
             ),
           ),
         ),
 
-        // Thumbnails
         if (widget.images.length > 1)
           SizedBox(
             height: 80,

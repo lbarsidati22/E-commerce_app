@@ -40,6 +40,7 @@ class ProductDetailsInfo extends StatelessWidget {
                   vertical: 8,
                 ),
                 decoration: BoxDecoration(
+                  // ignore: deprecated_member_use
                   border: Border.all(color: Colors.grey.withOpacity(0.3)),
                   borderRadius: BorderRadius.circular(25),
                 ),

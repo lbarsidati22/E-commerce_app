@@ -32,7 +32,6 @@ class HomePage extends StatelessWidget {
             final isProductsLoading =
                 (state is HomeSuccess && state.isProductsLoading);
 
-            // Mock data for Skeletonizer
             final brands = (state is HomeSuccess && state.brands != null)
                 ? state.brands!
                 : List.generate(

@@ -47,7 +47,6 @@ class MyApp extends StatelessWidget {
             initialRoute: (token != null && token!.isNotEmpty)
                 ? AppRoutes.navBar
                 : AppRoutes.authPage,
-            // initialRoute: AppRoutes.authPage,
           );
         },
       ),

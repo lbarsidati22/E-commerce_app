@@ -31,6 +31,7 @@ class ProfilePage extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
+
                         colors: [themeColor.withOpacity(0.8), themeColor],
                       ),
                     ),
@@ -92,10 +93,7 @@ class ProfilePage extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      _buildSectionHeader(
-                        context,
-                        context.l10n.account,
-                      ), // Assuming "Account" key exists or fallback to general
+                      _buildSectionHeader(context, context.l10n.account),
                       const SizedBox(height: 10),
                       _buildSettingCard(
                         context,
@@ -104,9 +102,7 @@ class ProfilePage extends StatelessWidget {
                             context,
                             title: context.l10n.editProfile,
                             icon: Icons.edit,
-                            onTap: () {
-                              // Navigate to edit profile
-                            },
+                            onTap: () {},
                           ),
                           const Divider(height: 1),
                           _buildActionTile(

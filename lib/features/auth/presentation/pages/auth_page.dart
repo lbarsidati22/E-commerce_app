@@ -32,7 +32,6 @@ class AuthPage extends StatelessWidget {
                   content: Text(state.message),
                 ),
               );
-              print(state.message);
             }
           },
           builder: (context, state) {
@@ -48,7 +47,6 @@ class AuthPage extends StatelessWidget {
                     child: Column(
                       children: [
                         // Theme and Language Switcher
-                        //  ThemeAndLangWidget(),
                         SizedBox(height: 16),
                         TabBar(
                           isScrollable: true,

@@ -302,6 +302,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get all => 'All';
 
   @override
+  String get hi => 'Hi';
+
+  @override
   String get status => 'Status';
 
   @override

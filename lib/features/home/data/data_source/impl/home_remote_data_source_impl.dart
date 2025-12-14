@@ -16,8 +16,7 @@ class HomeRemoteDataSourceImpl implements HomeDataSource {
   Future<ApiResult<CategoryResponseEntity>> getAllCategories() async {
     try {
       final response = await apiClient.getAllCategories();
-      // Validate response logic could go here if needed, e.g. checking status code or data presence
-      // For now, assuming successful return from retro fit implies success if no exception
+
       if (response.data != null) {
         return ApiSuccessResult(response.toEntity());
       }

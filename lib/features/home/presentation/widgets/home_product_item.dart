@@ -43,15 +43,6 @@ class HomeProductItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Positioned(
-                  //   top: 8,
-                  //   right: 8,
-                  //   child: CircleAvatar(
-                  //     backgroundColor: Colors.white,
-                  //     radius: 15,
-                  //     child:,
-                  //   ),
-                  // ),
                 ],
               ),
             ),

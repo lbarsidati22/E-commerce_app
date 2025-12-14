@@ -25,7 +25,6 @@ class HomeSearchBar extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        // switch theme
         DecoratedBox(
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,

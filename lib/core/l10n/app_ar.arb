@@ -15,6 +15,7 @@
   "settings": "الاعدادات",
   "logout": "خروج",
   "all": "الكل",
+  "hi": "مرحبا",
   "currentPassword": "كلمة المرور الحالية",
   "passwordCanNotBeEmpty": "كلمة المرور يجب ان لا تكون فارغا",
   "resetPassword": "إعادة تعيين كلمة المرور",

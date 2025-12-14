@@ -299,6 +299,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get all => 'الكل';
 
   @override
+  String get hi => 'مرحبا';
+
+  @override
   String get status => 'الحالة';
 
   @override

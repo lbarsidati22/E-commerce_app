@@ -18,30 +18,7 @@ class LayoutViewModel extends Cubit<LayoutState> {
     }
   }
 
-  List<Widget> tabs = [
-    // MultiBlocProvider(
-    //   providers: [
-    //   BlocProvider(
-    //     create: (context) => getIt.get<WorkoutCubit>()..fetchWorkout(),
-    //   ),
-    //   BlocProvider(
-    //     create: (context) => getIt.get<RecommendationCubit>()..fetchWorkout(),
-    //   ),
-    //     BlocProvider(
-    //       create: (context) => getIt.get<GetHomeMealsCategoriesCubit>()..getHomeMealsCategories(),
-    //     ),
-    //     BlocProvider(
-    //       create: (context) => getIt.get<ProfileViewModel>()..doIntent(ProfileClickedIntent()),
-    //     ),
-
-    //   ],
-
-    //    child:
-    HomePage(),
-    CategoryPage(),
-    CartPage(),
-    ProfilePage(),
-  ];
+  List<Widget> tabs = [HomePage(), CategoryPage(), CartPage(), ProfilePage()];
 
   void _changeBottomNav(int index) {
     emit(LayoutInitialState());
