@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:Ecommerce/core/di/di.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:Ecommerce/core/keys/shared_key.dart';
@@ -19,7 +17,6 @@ void main() async {
   await configureDependencies();
   await SharedPrefHelper().instantiatePreferences();
   final token = SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);
-  log('token is $token');
   runApp(MyApp(token: token));
 }
 

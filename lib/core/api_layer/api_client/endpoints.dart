@@ -1,7 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Endpoints {
-  static String baseUrl = dotenv.env['BASE_URL']!;
+  static final String baseUrl = dotenv.env['BASE_URL']!;
   static const String signUp = "/auth/signup";
   static const String signIn = "/auth/signin";
   static const String getAllProducts = "/products";
