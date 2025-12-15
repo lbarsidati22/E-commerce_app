@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'E-commerce App',
+            title: 'E-commerce  App',
             theme: AppTheme.lightTheme(context, state.locale.languageCode),
             darkTheme: AppTheme.darkTheme(context, state.locale.languageCode),
             themeMode: state.themeMode,
