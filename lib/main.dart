@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:Ecommerce/core/di/di.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:Ecommerce/core/keys/shared_key.dart';
 import 'package:Ecommerce/core/modules/shared_preferences_module.dart';
 import 'package:Ecommerce/core/route/app_routes.dart';
@@ -14,6 +15,7 @@ import 'core/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await configureDependencies();
   await SharedPrefHelper().instantiatePreferences();
   final token = SharedPrefHelper().getString(key: SharedPrefKeys.tokenKey);

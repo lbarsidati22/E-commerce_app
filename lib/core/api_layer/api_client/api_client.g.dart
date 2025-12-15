@@ -12,7 +12,7 @@ part of 'api_client.dart';
 
 class _ApiClient implements ApiClient {
   _ApiClient(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://ecommerce.routemisr.com/api/v1';
+    baseUrl ??= 'BASE_URL';
   }
 
   final Dio _dio;
