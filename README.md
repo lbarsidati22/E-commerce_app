@@ -89,3 +89,12 @@ lib/
 ## 📄 License
 
 This project is licensed under the MIT License.
+
+
+For iOS Users: Just moving the file to the folder is not enough for iOS. You MUST:
+
+Open your project in Xcode (ios/Runner.xcworkspace).
+Right-click on the Runner folder.
+Select "Add Files to 'Runner'...".
+Select notification_sound.mp3 from the folder and click Add.
+Make sure "Copy items if needed" is checked and "Runner" target is selected."
